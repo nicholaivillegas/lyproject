@@ -11,10 +11,6 @@
             android:icon="@drawable/ic_location_searching_black_24dp"
             android:title="Branch Locator" />
         <item
-            android:id="@+id/nav_monitor"
-            android:icon="@drawable/ic_show_chart_black_24dp"
-            android:title="Monitor" />
-        <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_date_range_black_24dp"
             android:title="Calendar" />

@@ -17,10 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mobileapp.loveyourself.fragment.BranchLocatorFragment;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mobileapp.loveyourself.fragment.CalendarFragment;
 import com.mobileapp.loveyourself.fragment.HistoryFragment;
-import com.mobileapp.loveyourself.fragment.MonitorFragment;
 import com.mobileapp.loveyourself.fragment.ReservationFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -93,9 +92,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_reservation) {
             switchFragment(new ReservationFragment());
         } else if (id == R.id.nav_locator) {
-            switchFragment(new BranchLocatorFragment());
-        } else if (id == R.id.nav_monitor) {
-            switchFragment(new MonitorFragment());
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
         } else if (id == R.id.nav_calendar) {
             switchFragment(new CalendarFragment());
         } else if (id == R.id.nav_history) {
@@ -119,8 +116,9 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_logout) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
