@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Triangle of Self-Care: Understanding the Window Period "
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, March 09, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Mark Angelo de Castro A common question regarding HIV testing is: “When should I go for one?” Some say HIV testing should be done regularly, at least once a year. Others say it has to be twice a year, and there are those who say it should be done quarterly. None of them are wrong, but none of the statements are entirely correct either. This is because the correct time a person has to undergo HIV testing depends on his/her actions and behaviors...."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Volunteer Spotlight: Yanyan Araña and Bubbles Rosos, “I Am A Woman” "
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Monday, March 06, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Ruben Jay C. Alvarez Jr. If you happen to be part of the LGBT community and an advocate of diversity and inclusion, you definitely have an idea of one of the spectrums of the rainbow, the transgender people. With all the heat that is going on inside the senate regarding the passing of the Anti-Discrimination Bill and the hatred and bigotry flowing on social media, it is good to have a glimpse on some of the things we need to understand..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LoveYourself holds annual Cherry Poppin' fundraiser, launches new TestMNL campaign"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Monday, February 27, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="One Canvas Events Place in Makati City was abuzz last February 25 for Cherry Poppin' - The 3rd Party, the third installment of LoveYourself's annual date auction for a cause. BJ Pascual Twelve gorgeous bachelors, including today's most in-demand photographer BJ Pascual and celebrity chef Jeremy Favia, were auctioned off to 430 thrilled bidders. Pascual and Favia topped the bids with P60,000 and P45,000, respectively. Jeremy Favia Attendees..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Score the good kind of high with Sinulog Heartthrob Jhoseph Llorente at Cherry Poppin’ - The 3rd Party"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, February 23, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Mark Angello Ganon Get ready to dull your senses with great booze and loud music with our Sinulog Heartthrob Jhoseph Llorente, as he joins the wolf pack of alpha males in LoveYourself’s hottest event, Cherry Poppin’ - The 3rd Party on February 25 at One Canvas Events Place in Makati (get tickets here: go.loveyourself.ph/cherrytickets). Sef, as he is oftentimes called, is a 21-year-old alumnus of both Far Eastern University and De La Salle.."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Coffee Prince Mark Ortega will make you feel piping hot at Cherry Poppin' - The 3rd Party "
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, February 23, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Jean Natividad Mark Ortega is just like your favorite cup of coffee: addictive, hot, and hits the right spot. Feel the heat when this Coffee Prince walks the runway at Cherry Poppin' - The 3rd Party on February 25 at One Canvas Events Place in Makati (get tickets here: go.loveyourself.ph/cherrytickets). Mark works his magic behind coffee shop counters as a barista... "
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

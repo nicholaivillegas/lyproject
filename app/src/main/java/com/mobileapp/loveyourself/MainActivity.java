@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mobileapp.loveyourself.fragment.CalendarFragment;
 import com.mobileapp.loveyourself.fragment.HistoryFragment;
+import com.mobileapp.loveyourself.fragment.NewsFragment;
 import com.mobileapp.loveyourself.fragment.ReservationFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        switchFragment(new NewsFragment());
     }
 
     @Override
@@ -88,8 +91,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_reservation) {
+        if (id == R.id.nav_news) {
+            switchFragment(new NewsFragment());
+        } else if (id == R.id.nav_reservation) {
             switchFragment(new ReservationFragment());
         } else if (id == R.id.nav_locator) {
             startActivity(new Intent(MainActivity.this, MapsActivity.class));
