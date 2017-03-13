@@ -15,9 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mobileapp.loveyourself.fragment.CalendarFragment;
 import com.mobileapp.loveyourself.fragment.HistoryFragment;
 import com.mobileapp.loveyourself.fragment.NewsFragment;
@@ -26,12 +28,16 @@ import com.mobileapp.loveyourself.fragment.ReservationFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private TextView textName, textEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setIcon(R.drawable.lylogo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +55,12 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        textName = (TextView) headerView.findViewById(R.id.text_name);
+        textEmail = (TextView) headerView.findViewById(R.id.text_email);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        textName.setText(user.getDisplayName());
+        textEmail.setText(user.getEmail());
         navigationView.setNavigationItemSelectedListener(this);
 
         switchFragment(new NewsFragment());
