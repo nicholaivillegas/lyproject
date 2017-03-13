@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin = (Button) findViewById(R.id.btn_login);
-        btnAnon = (Button) findViewById(R.id.btn_anon);
         btnForgot = (Button) findViewById(R.id.btn_reset_password);
         btnSignUp = (Button) findViewById(R.id.btn_signup);
         etEmail = (EditText) findViewById(R.id.edit_email);
@@ -103,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
         btnLogin.setOnClickListener(this);
-        btnAnon.setOnClickListener(this);
         btnForgot.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
