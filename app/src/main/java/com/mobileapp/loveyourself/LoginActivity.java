@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin = (Button) findViewById(R.id.btn_login);
-        btnGoogle = (SignInButton ) findViewById(R.id.btn_google);
+        btnGoogle = (SignInButton) findViewById(R.id.btn_google);
         btnForgot = (Button) findViewById(R.id.btn_reset_password);
         btnSignUp = (Button) findViewById(R.id.btn_signup);
         etEmail = (EditText) findViewById(R.id.edit_email);
@@ -189,7 +189,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        // ...
+                        progress.setVisibility(View.GONE);
                     }
                 });
     }
@@ -230,6 +230,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_google:
+                progress.setVisibility(View.VISIBLE);
                 gSignIn();
                 break;
 

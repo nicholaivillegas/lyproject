@@ -25,7 +25,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SIGN UP";
-    private EditText inputName, inputEmail, inputPassword;
+    private EditText inputFirstName, inputLastName, inputEmail, inputPassword;
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -40,7 +40,8 @@ public class SignupActivity extends AppCompatActivity {
 
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
-        inputName = (EditText) findViewById(R.id.edit_name);
+        inputFirstName = (EditText) findViewById(R.id.edit_first_name);
+        inputLastName = (EditText) findViewById(R.id.edit_last_name);
         inputEmail = (EditText) findViewById(R.id.edit_email);
         inputPassword = (EditText) findViewById(R.id.edit_password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -64,11 +65,17 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String name = inputName.getText().toString().trim();
+                final String firstName = inputFirstName.getText().toString().trim();
+                final String lastName = inputLastName.getText().toString().trim();
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
-                if (TextUtils.isEmpty(name)) {
+                if (TextUtils.isEmpty(firstName)) {
+                    Toast.makeText(getApplicationContext(), "Enter Name!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(lastName)) {
                     Toast.makeText(getApplicationContext(), "Enter Name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -106,7 +113,7 @@ public class SignupActivity extends AppCompatActivity {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(name)
+                                            .setDisplayName(firstName + " " + lastName)
 //                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
                                             .build();
 
