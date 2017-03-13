@@ -23,6 +23,10 @@
     <item android:title="About Us">
         <menu>
             <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_info_outline_black_24dp"
+                android:title="About" />
+            <item
                 android:id="@+id/nav_locator"
                 android:icon="@drawable/ic_location_searching_black_24dp"
                 android:title="Branch Locator" />

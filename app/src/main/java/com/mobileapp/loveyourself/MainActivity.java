@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.mobileapp.loveyourself.fragment.AboutFragment;
 import com.mobileapp.loveyourself.fragment.CalendarFragment;
 import com.mobileapp.loveyourself.fragment.HistoryFragment;
 import com.mobileapp.loveyourself.fragment.NewsFragment;
@@ -96,12 +97,14 @@ public class MainActivity extends AppCompatActivity
             switchFragment(new NewsFragment());
         } else if (id == R.id.nav_reservation) {
             switchFragment(new ReservationFragment());
-        } else if (id == R.id.nav_locator) {
-            startActivity(new Intent(MainActivity.this, MapsActivity.class));
         } else if (id == R.id.nav_calendar) {
             switchFragment(new CalendarFragment());
         } else if (id == R.id.nav_history) {
             switchFragment(new HistoryFragment());
+        } else if (id == R.id.nav_about) {
+            switchFragment(new AboutFragment());
+        } else if (id == R.id.nav_locator) {
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
         } else if (id == R.id.nav_share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
