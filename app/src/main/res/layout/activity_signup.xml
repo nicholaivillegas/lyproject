@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/firstname"
-                    android:inputType="textCapSentences"
+                    android:inputType="textCapWords"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
                     android:textColorHint="@color/colorLightPrimary" />
@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/lastname"
-                    android:inputType="textCapSentences"
+                    android:inputType="textCapWords"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
                     android:textColorHint="@color/colorLightPrimary" />
