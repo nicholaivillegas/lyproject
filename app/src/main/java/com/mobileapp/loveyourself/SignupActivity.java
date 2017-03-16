@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.mobileapp.loveyourself.dialog.SignUpDialog;
 
 /**
  * Created by Nico on 11/23/2016.
@@ -29,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,12 +126,11 @@ public class SignupActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Log.d(TAG, "User profile updated.");
+                                                        SignUpDialog signUpDialog = new SignUpDialog();
+                                                        signUpDialog.show(getFragmentManager(), "Sign Up");
                                                     }
                                                 }
                                             });
-                                    finish();
-                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-
                                 }
                             }
                         });
