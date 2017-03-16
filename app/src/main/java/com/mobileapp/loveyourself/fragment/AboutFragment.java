@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 
 import com.mobileapp.loveyourself.R;
 
-/**
- * Created by Nico on 3/13/2017.
- */
-
 public class AboutFragment extends Fragment {
 
     @Nullable

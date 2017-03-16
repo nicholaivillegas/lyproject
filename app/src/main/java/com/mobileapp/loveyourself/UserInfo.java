@@ -1,9 +1,5 @@
 package com.mobileapp.loveyourself;
 
-/**
- * Created by Nico on 3/16/2017.
- */
-
 public class UserInfo {
 
     public String id;

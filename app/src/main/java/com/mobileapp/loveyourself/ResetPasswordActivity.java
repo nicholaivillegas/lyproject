@@ -1,9 +1,5 @@
 package com.mobileapp.loveyourself;
 
-/**
- * Created by Nico on 11/23/2016.
- */
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

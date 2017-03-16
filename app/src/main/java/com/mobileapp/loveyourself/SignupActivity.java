@@ -21,10 +21,6 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.mobileapp.loveyourself.dialog.SignUpDialog;
 
-/**
- * Created by Nico on 11/23/2016.
- */
-
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SIGN UP";
     private EditText inputFirstName, inputLastName, inputEmail, inputPassword;

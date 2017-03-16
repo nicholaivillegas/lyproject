@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ProgressBar progress;
     GoogleApiClient mGoogleApiClient;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,7 +246,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public static boolean isValidEmail(String target) {
         return target != null && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-//android Regex to check the email address Validation
     }
 
     public void checkFields() {

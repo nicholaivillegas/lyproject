@@ -13,10 +13,6 @@ import android.widget.TextView;
 
 import com.mobileapp.loveyourself.R;
 
-/**
- * Created by Nico on 3/13/2017.
- */
-
 public class BranchDialog extends DialogFragment {
 
     private TextView textTitle, textLocation, textPhone, textClinicHours, textDescription;

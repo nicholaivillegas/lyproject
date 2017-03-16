@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 
 import com.mobileapp.loveyourself.R;
 
-/**
- * Created by Nico on 3/10/2017.
- */
-
 public class BranchLocatorFragment extends Fragment {
 
     @Nullable

@@ -24,10 +24,6 @@ import com.mobileapp.loveyourself.LoginActivity;
 import com.mobileapp.loveyourself.R;
 import com.mobileapp.loveyourself.UserInfo;
 
-/**
- * Created by Nico on 3/16/2017.
- */
-
 public class SignUpDialog extends DialogFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     DatePicker datePicker;

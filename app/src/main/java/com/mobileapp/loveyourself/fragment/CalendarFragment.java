@@ -12,10 +12,6 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.Date;
 
-/**
- * Created by Nico on 3/10/2017.
- */
-
 public class CalendarFragment extends Fragment {
 
     MaterialCalendarView calendarView;

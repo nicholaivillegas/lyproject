@@ -14,10 +14,6 @@ import android.widget.ImageView;
 import com.mobileapp.loveyourself.R;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by Nico on 3/13/2017.
- */
-
 public class NewsFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5;
