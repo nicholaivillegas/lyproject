@@ -12,6 +12,8 @@
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
     <string name="email">Email</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="location">Location</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
     <string name="change_email">Change Email</string>
@@ -22,7 +24,9 @@
     <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
+    <string name="hint_username">Email</string>
     <string name="hint_password">Password</string>
+    <string name="hint_password_retype">Retype Password</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_login_google">GOOGLE</string>

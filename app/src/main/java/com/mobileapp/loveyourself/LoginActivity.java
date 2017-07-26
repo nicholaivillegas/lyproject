@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     Button btnLogin, btnForgot, btnSignUp;
-    SignInButton btnGoogle;
     EditText etEmail, etPassword;
     TextInputLayout tilEmail, tilPassword;
     ProgressBar progress;
@@ -49,7 +48,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin = (Button) findViewById(R.id.btn_login);
-        btnGoogle = (SignInButton) findViewById(R.id.btn_google);
         btnForgot = (Button) findViewById(R.id.btn_reset_password);
         btnSignUp = (Button) findViewById(R.id.btn_signup);
         etEmail = (EditText) findViewById(R.id.edit_email);
@@ -114,7 +112,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
         btnLogin.setOnClickListener(this);
-        btnGoogle.setOnClickListener(this);
         btnForgot.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
@@ -226,11 +223,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_login:
                 progress.setVisibility(View.VISIBLE);
                 signInEmailPassword(etEmail.getText().toString(), etPassword.getText().toString());
-                break;
-
-            case R.id.btn_google:
-                progress.setVisibility(View.VISIBLE);
-                gSignIn();
                 break;
 
             case R.id.btn_reset_password:

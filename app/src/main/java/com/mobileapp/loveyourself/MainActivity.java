@@ -99,30 +99,10 @@ public class MainActivity extends AppCompatActivity
             switchFragment(new ReservationFragment());
         } else if (id == R.id.nav_calendar) {
             switchFragment(new CalendarFragment());
-        } else if (id == R.id.nav_history) {
-            switchFragment(new HistoryFragment());
         } else if (id == R.id.nav_about) {
             switchFragment(new AboutFragment());
         } else if (id == R.id.nav_locator) {
             startActivity(new Intent(MainActivity.this, MapsActivity.class));
-        } else if (id == R.id.nav_share) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT,
-                    "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
-        } else if (id == R.id.nav_suggestion) {
-            Intent i = new Intent(Intent.ACTION_SEND);
-            i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL, new String[]{"francistancapstone@gmail.com"});
-            i.putExtra(Intent.EXTRA_SUBJECT, "From Love Yourself App");
-            i.putExtra(Intent.EXTRA_TEXT, "Hi!");
-            try {
-                startActivity(Intent.createChooser(i, "Send mail..."));
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             finish();
