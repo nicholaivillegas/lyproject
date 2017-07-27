@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:contentPadding="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorAccent">
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <EditText
                         android:id="@+id/edit_first_name"
@@ -43,7 +44,6 @@
                         android:hint="First Name"
                         android:inputType="textCapWords"
                         android:maxLines="1"
-                        android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorAccent">
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <EditText
                         android:id="@+id/edit_last_name"
@@ -61,7 +61,6 @@
                         android:hint="Last Name"
                         android:inputType="textCapWords"
                         android:maxLines="1"
-                        android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -70,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorAccent">
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <EditText
                         android:id="@+id/edit_city_residence"
@@ -79,7 +78,6 @@
                         android:hint="City of Residence"
                         android:inputType="textCapWords"
                         android:maxLines="1"
-                        android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -88,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorAccent">
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <EditText
                         android:id="@+id/edit_city_work"
@@ -97,7 +95,6 @@
                         android:hint="City of Work"
                         android:inputType="textCapWords"
                         android:maxLines="1"
-                        android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -118,7 +115,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="How did you learn about LoveYourself? "
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -130,50 +127,43 @@
                         android:id="@+id/radio_blogs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Blogs (e.g. Blogspot, WordPress, Tumblr)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Blogs (e.g. Blogspot, WordPress, Tumblr)" />
 
                     <RadioButton
                         android:id="@+id/radio_referral"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Referral From A Friend/Payo ng kaibigan"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Referral From A Friend/Payo ng kaibigan" />
 
                     <RadioButton
                         android:id="@+id/radio_search_engine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Search Engine (e.g. Google, Yahoo, Bing)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Search Engine (e.g. Google, Yahoo, Bing)" />
 
                     <RadioButton
                         android:id="@+id/radio_smart_app"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Smart Phone Application (e.g. Grindr, Hornet, Jack'd, Scruff)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Smart Phone Application (e.g. Grindr, Hornet, Jack'd, Scruff)" />
 
                     <RadioButton
                         android:id="@+id/radio_social_network1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Social Networking Service I (e.g. Facebook, Twitter)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Social Networking Service I (e.g. Facebook, Twitter)" />
 
                     <RadioButton
                         android:id="@+id/radio_social_network2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Social Networking Service II (e.g. Planet Romeo, Manjam, Tagged)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Social Networking Service II (e.g. Planet Romeo, Manjam, Tagged)" />
 
                     <RadioButton
                         android:id="@+id/radio_other1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Other"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Other" />
 
                     <EditText
                         android:id="@+id/edit_other1"
@@ -195,7 +185,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="Preferred Means of Communication"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <CheckBox
@@ -243,7 +233,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="Preferred Language of Communication"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -255,29 +245,25 @@
                         android:id="@+id/radio_language_tagalog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tagalog"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Tagalog" />
 
                     <RadioButton
                         android:id="@+id/radio_language_english"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="English"
-                        android:textColor="@color/colorAccent" />
+                        android:text="English" />
 
                     <RadioButton
                         android:id="@+id/radio_language_taglish"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TagLish"
-                        android:textColor="@color/colorAccent" />
+                        android:text="TagLish" />
 
                     <RadioButton
                         android:id="@+id/radio_language_other"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Other"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Other" />
 
                     <EditText
                         android:id="@+id/edit_language_other"
@@ -300,7 +286,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="Is there anything that keeps you from getting yourself tested for HIV? (You may select more than one answer) "
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <CheckBox
@@ -371,7 +357,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="Where do you want to get tested?"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -383,15 +369,13 @@
                         android:id="@+id/radio_branch_anglo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Anglo (Shaw Blvd. near EDSA, Mandaluyong)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Anglo (Shaw Blvd. near EDSA, Mandaluyong)" />
 
                     <RadioButton
                         android:id="@+id/radio_branch_uni"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Uni (Taft Ave. near Gil Puyat Ave., Pasay)"
-                        android:textColor="@color/colorAccent" />
+                        android:text="Uni (Taft Ave. near Gil Puyat Ave., Pasay)" />
                 </RadioGroup>
 
                 <TextView
@@ -401,7 +385,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="Your Available Date for Testing (Except Mondays/Tuesdays for both Anglo and Uni)"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <DatePicker
@@ -417,6 +401,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_selector"
                     android:text="SUBMIT"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="bold" />
             </LinearLayout>
 
