@@ -2,6 +2,7 @@ package com.mobileapp.loveyourself;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,24 +11,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.auth.*;
 import com.google.firebase.database.DatabaseReference;
-import com.mobileapp.loveyourself.dialog.SignUpDialog;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     private static final String TAG = "SIGN UP";
-    private EditText inputFirstName, inputLastName, inputEmail, inputPassword;
+    private EditText inputFirstName, inputLastName, inputEmail, inputLocation, inputContactNumber, inputPassword, inputRetypePassword;
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
+    private RadioButton radioMale, radioFemale;
+    private RadioGroup radioGroupGender;
+    private String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +39,23 @@ public class SignupActivity extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputFirstName = (EditText) findViewById(R.id.edit_first_name);
         inputLastName = (EditText) findViewById(R.id.edit_last_name);
         inputEmail = (EditText) findViewById(R.id.edit_email);
+        inputLocation = (EditText) findViewById(R.id.edit_location);
+        inputContactNumber = (EditText) findViewById(R.id.edit_contact_number);
         inputPassword = (EditText) findViewById(R.id.edit_password);
+        inputRetypePassword = (EditText) findViewById(R.id.edit_retype_password);
+        radioGroupGender = (RadioGroup) findViewById(R.id.radiogroup_gender);
+        radioMale = (RadioButton) findViewById(R.id.radio_male);
+        radioFemale = (RadioButton) findViewById(R.id.radio_female);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
-
+        radioGroupGender.setOnCheckedChangeListener(this);
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +112,7 @@ public class SignupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(SignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
@@ -116,17 +124,18 @@ public class SignupActivity extends AppCompatActivity {
 //                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
                                             .build();
 
-                                    user.updateProfile(profileUpdates)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Log.d(TAG, "User profile updated.");
-                                                        SignUpDialog signUpDialog = new SignUpDialog();
-                                                        signUpDialog.show(getFragmentManager(), "Sign Up");
+                                    if (user != null) {
+                                        user.updateProfile(profileUpdates)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Log.d(TAG, "User profile updated.");
+                                                            saveProfile();
+                                                        }
                                                     }
-                                                }
-                                            });
+                                                });
+                                    }
                                 }
                             }
                         });
@@ -135,9 +144,33 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+    private void saveProfile() {
+        UserInfo user = new UserInfo(
+                FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                inputFirstName.getText().toString(),
+                inputLastName.getText().toString(),
+                inputEmail.getText().toString(),
+                gender,
+                inputLocation.getText().toString(),
+                inputContactNumber.getText().toString(),
+                "",
+                "active",
+                "");
+        mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+        if (checkedId == R.id.radio_male) {
+            gender = "Male";
+        } else if (checkedId == R.id.radio_female) {
+            gender = "Female";
+        }
     }
 }
