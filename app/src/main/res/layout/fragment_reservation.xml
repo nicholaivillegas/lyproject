@@ -175,7 +175,8 @@
                         android:paddingEnd="20dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingStart="20dp" />
+                        android:paddingStart="20dp"
+                        android:visibility="gone" />
 
                 </RadioGroup>
 
@@ -205,7 +206,8 @@
                     android:paddingEnd="20dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingStart="20dp" />
+                    android:paddingStart="20dp"
+                    android:visibility="gone" />
 
                 <CheckBox
                     android:id="@+id/check_communication_email"
@@ -224,7 +226,8 @@
                     android:paddingEnd="20dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingStart="20dp" />
+                    android:paddingStart="20dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textView1"
@@ -275,7 +278,8 @@
                         android:paddingEnd="20dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingStart="20dp" />
+                        android:paddingStart="20dp"
+                        android:visibility="gone" />
 
                 </RadioGroup>
 
@@ -344,6 +348,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Other"
+                    android:visibility="gone"
                     android:inputType="textCapSentences"
                     android:paddingEnd="20dp"
                     android:paddingLeft="20dp"

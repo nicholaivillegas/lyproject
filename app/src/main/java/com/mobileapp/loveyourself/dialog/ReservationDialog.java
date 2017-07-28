@@ -26,13 +26,14 @@ import com.mobileapp.loveyourself.UserInfo;
 
 public class ReservationDialog extends DialogFragment implements View.OnClickListener {
 
-//    private DatabaseReference mDatabase;
+    private Button buttonProceed;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_reservation_reminder, container, false);
-
+        buttonProceed = (Button) view.findViewById(R.id.button_proceed);
+        buttonProceed.setOnClickListener(this);
         return view;
     }
 
@@ -40,7 +41,6 @@ public class ReservationDialog extends DialogFragment implements View.OnClickLis
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setDialogWindow();
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void setDialogWindow() {
@@ -58,12 +58,8 @@ public class ReservationDialog extends DialogFragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_save:
+            case R.id.button_proceed:
                 dismiss();
-//                Intent intent = new Intent(getActivity(), LoginActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent);
-
                 break;
         }
     }
