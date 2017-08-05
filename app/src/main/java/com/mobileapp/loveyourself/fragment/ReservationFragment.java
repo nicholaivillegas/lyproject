@@ -3,6 +3,7 @@ package com.mobileapp.loveyourself.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mobileapp.loveyourself.R;
 import com.mobileapp.loveyourself.Reservation;
 import com.mobileapp.loveyourself.UserInfo;
@@ -39,7 +44,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     public String firstName;
     public String lastName;
     public String cityOfResidence;
-    public String cityOfWork;
     public String howDidYouLearn;
     public String mobile;
     public String email;
@@ -59,6 +63,8 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
 
     private int ctr = 0;
     private DatabaseReference mDatabase;
+    private DatabaseReference myRef;
+    private ChildEventListener ref;
 
     @Nullable
     @Override
@@ -68,7 +74,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         editFname = (EditText) view.findViewById(R.id.edit_first_name);
         editLname = (EditText) view.findViewById(R.id.edit_last_name);
         editCityResidence = (EditText) view.findViewById(R.id.edit_city_residence);
-        editCityWork = (EditText) view.findViewById(R.id.edit_city_work);
         editCommunicationEmail = (EditText) view.findViewById(R.id.edit_communication_email);
         editCommunicationMobile = (EditText) view.findViewById(R.id.edit_communication_mobile);
         editHindranceOther = (EditText) view.findViewById(R.id.edit_hindrance_other);
@@ -129,6 +134,12 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadFields();
     }
 
     @Override
@@ -236,7 +247,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         firstName = editFname.getText().toString();
         lastName = editLname.getText().toString();
         cityOfResidence = editCityResidence.getText().toString();
-        cityOfWork = editCityWork.getText().toString();
         if (radioOther1.isChecked()) {
             howDidYouLearn = editOther1.getText().toString();
         }
@@ -293,15 +303,56 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         } else {
             hindrance8 = "No";
         }
-        testingDate = String.valueOf(datepicker.getMonth()) + "-" + String.valueOf(datepicker.getDayOfMonth()) + "-" + String.valueOf(datepicker.getYear());
-
+        testingDate = String.valueOf(datepicker.getYear()) + "," + String.valueOf(datepicker.getMonth()) + "," + String.valueOf(datepicker.getDayOfMonth());
     }
 
     private void saveProfile() {
-//        id, timestamp, firstName, lastName, cityOfResidence, cityOfWork, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, testingDate, other, extra
-        Reservation user = new Reservation(id, timestamp, firstName, lastName, cityOfResidence, cityOfWork, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, testingDate, other, extra);
+//        id, timestamp, firstName, lastName, cityOfResidence, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, testingDate, other, extra
+        Reservation user = new Reservation(FirebaseAuth.getInstance().getCurrentUser().getUid(), timestamp, firstName, lastName, cityOfResidence, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth()), String.valueOf(datepicker.getDayOfMonth()), other, extra);
         mDatabase.child("reservations").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
         Toast.makeText(getContext(), "Reservation Successful", Toast.LENGTH_LONG).show();
+    }
+
+    private void loadFields() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        ref = myRef.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+                    try {
+                        UserInfo model = dataSnapshot.getValue(UserInfo.class);
+                        if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            Toast.makeText(getContext(), model.getFirstName(), Toast.LENGTH_LONG).show();
+
+                            editFname.setText(model.getFirstName());
+                            editLname.setText(model.getLastName());
+                            editCityResidence.setText(model.getLocation());
+                        }
+                    } catch (Exception ex) {
+                        Log.e("RAWR", ex.getMessage());
+                    }
+                }
+            }
+
+            // This function is called each time a child item is removed.
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("TAG:", "Failed to read value.", error.toException());
+            }
+        });
     }
 
 }

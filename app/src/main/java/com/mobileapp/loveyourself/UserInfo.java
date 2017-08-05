@@ -70,6 +70,14 @@ public class UserInfo {
         this.gender = gender;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getNumber() {
         return number;
     }

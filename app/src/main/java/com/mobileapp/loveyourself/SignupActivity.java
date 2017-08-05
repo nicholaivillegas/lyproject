@@ -132,6 +132,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
                                                         if (task.isSuccessful()) {
                                                             Log.d(TAG, "User profile updated.");
                                                             saveProfile();
+                                                            finish();
                                                         }
                                                     }
                                                 });

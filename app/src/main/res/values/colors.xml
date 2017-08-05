@@ -20,4 +20,8 @@
     <color name="btn_facebook">#3b5998</color>
     <color name="btn_facebook_lite">#8b9dc3</color>
     <color name="btn_google">#008744</color>
+
+
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
 </resources>

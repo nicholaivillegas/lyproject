@@ -4,8 +4,12 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,21 +22,120 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mobileapp.loveyourself.dialog.BranchDialog;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnInfoWindowCloseListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
+import org.w3c.dom.Text;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnInfoWindowCloseListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
     private Button buttonCenter;
+    private Spinner spinner;
+
+    LatLng anglo = new LatLng(14.583544, 121.051299);
+    LatLng uni = new LatLng(14.554933, 120.997198);
+    LatLng caloocan = new LatLng(14.741942, 121.026043);
+    LatLng pasig = new LatLng(14.588958, 121.068702);
+    LatLng saintCamillus = new LatLng(14.612105, 121.091826);
+    LatLng quezonCityHealth = new LatLng(14.646152, 121.052300);
+    LatLng quezonCityKlinika = new LatLng(14.627863, 121.046516);
+    LatLng makatiSocial = new LatLng(14.539638, 121.063096);
+    LatLng pedroCruz = new LatLng(14.603717, 121.027149);
+    LatLng manilaSocial = new LatLng(14.613007, 120.981414);
+    LatLng lasPinasSocial = new LatLng(14.434187, 121.012183);
+    LatLng navotasCityHealth = new LatLng(14.662376, 120.945714);
+    LatLng valenzuelaHealth = new LatLng(14.692201, 120.969021);
+    LatLng paranaqueSocial = new LatLng(14.470505, 121.022255);
+    LatLng pasayCitySocial = new LatLng(14.543890, 120.995039);
+    LatLng mandaluyongCitySocial = new LatLng(14.539638, 121.063096);
+    LatLng mandaluyongCityDrop = new LatLng(14.576297, 121.035259);
+    LatLng taguigCitySocial = new LatLng(14.529436, 121.070450);
+    LatLng taguigCityDrop = new LatLng(14.510827, 121.034148);
+    LatLng paterosClinical = new LatLng(14.544830, 121.066628);
+    LatLng marikinaSocial = new LatLng(14.636186, 121.097656);
+    LatLng aidsSociety = new LatLng(14.636762, 121.033494);
+    LatLng sanLazaro = new LatLng(14.613786, 120.980968);
+    LatLng philGen = new LatLng(14.577722, 120.985615);
+    LatLng makatiMed = new LatLng(14.559060, 121.014970);
+    LatLng theResearchAlabang = new LatLng(14.409846, 121.037030);
+    LatLng theResearchMalate = new LatLng(14.572888, 120.992933);
+    LatLng theResearchManda = new LatLng(14.409846, 121.037030);
+    LatLng hiPrecisionDelMonte = new LatLng(14.638366, 121.003000);
+    LatLng hiPrecisionRockwell = new LatLng(14.565516, 121.036140);
+    LatLng hiPrecisionVluna = new LatLng(14.637288, 121.050060);
+    LatLng hiPrecisionPasig = new LatLng(14.637288, 121.050060);
+    LatLng hpdTaft = new LatLng(14.572898, 120.990336);
+    LatLng hiPrecisionKalaw = new LatLng(14.582200, 120.982060);
+    LatLng hiPrecisionLasPinas = new LatLng(14.443396, 120.995333);
+    LatLng megaClinic = new LatLng(14.585427, 121.057092);
+    LatLng woodWater = new LatLng(14.640359, 121.069509);
+    LatLng pasigSocial = new LatLng(14.558102, 121.081993);
+    LatLng joseReyes = new LatLng(14.614228, 120.981953);
+    LatLng muntinlupaHealth = new LatLng(14.395086, 121.049811);
+    LatLng batasanSocial = new LatLng(14.686256, 121.088386);
+    LatLng bernardoSocial = new LatLng(14.627913, 121.046640);
+    LatLng theShip = new LatLng(14.585644, 121.048210);
+    LatLng hiPrecisionSucat = new LatLng(14.465718, 121.018302);
+    LatLng hiPrecisionAlabang = new LatLng(14.443396, 120.995333);
+    LatLng hiPrecisionEastAve = new LatLng(14.637579, 121.046333);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         buttonCenter = (Button) findViewById(R.id.btn_center);
+        spinner = (Spinner) findViewById(R.id.spinner);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         buttonCenter.setOnClickListener(this);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Branch Locator");
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+                mMap.clear();
+                if (parentView.getSelectedItem().toString().equals("All")) {
+                    addMarkerLuzon();
+                } else if (parentView.getSelectedItem().toString().equals("Caloocan City")) {
+                    caloocanMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Las Pinas City")) {
+                    lasPinasMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Makati City")) {
+                    makatiMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Mandaluyong City")) {
+                    mandaluyongMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Manila City")) {
+                    manilaMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Marikina City")) {
+                    marikinaMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Muntinlupa City")) {
+                    muntinlupaMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Navotas City")) {
+                    navotasMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Paranaque City")) {
+                    paranaqueMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Pasay City")) {
+                    pasayMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Pasig City")) {
+                    pasigMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Quezon City")) {
+                    quezonCityMarker();
+                } else if (parentView.getSelectedItem().toString().equals("San Juan City")) {
+                    sanJuanMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Taguig City")) {
+                    taguigMarker();
+                } else if (parentView.getSelectedItem().toString().equals("Valenzuela City")) {
+                    valenzuelaMarker();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
 
@@ -119,53 +222,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void addMarkerLuzon() {
-        LatLng anglo = new LatLng(14.583544, 121.051299);
-        LatLng uni = new LatLng(14.554933, 120.997198);
-        LatLng caloocan = new LatLng(14.741942, 121.026043);
-        LatLng pasig = new LatLng(14.588958, 121.068702);
-        LatLng saintCamillus = new LatLng(14.612105, 121.091826);
-        LatLng quezonCityHealth = new LatLng(14.646152, 121.052300);
-        LatLng quezonCityKlinika = new LatLng(14.627863, 121.046516);
-        LatLng makatiSocial = new LatLng(14.539638, 121.063096);
-        LatLng pedroCruz = new LatLng(14.603717, 121.027149);
-        LatLng manilaSocial = new LatLng(14.613007, 120.981414);
-        LatLng lasPinasSocial = new LatLng(14.434187, 121.012183);
-        LatLng navotasCityHealth = new LatLng(14.662376, 120.945714);
-        LatLng valenzuelaHealth = new LatLng(14.692201, 120.969021);
-        LatLng paranaqueSocial = new LatLng(14.470505, 121.022255);
-        LatLng pasayCitySocial = new LatLng(14.543890, 120.995039);
-        LatLng mandaluyongCitySocial = new LatLng(14.539638, 121.063096);
-        LatLng mandaluyongCityDrop = new LatLng(14.576297, 121.035259);
-        LatLng taguigCitySocial = new LatLng(14.529436, 121.070450);
-        LatLng taguigCityDrop = new LatLng(14.510827, 121.034148);
-        LatLng paterosClinical = new LatLng(14.544830, 121.066628);
-        LatLng marikinaSocial = new LatLng(14.636186, 121.097656);
-        LatLng aidsSociety = new LatLng(14.636762, 121.033494);
-        LatLng sanLazaro = new LatLng(14.613786, 120.980968);
-        LatLng philGen = new LatLng(14.577722, 120.985615);
-        LatLng makatiMed = new LatLng(14.559060, 121.014970);
-        LatLng theResearchAlabang = new LatLng(14.409846, 121.037030);
-        LatLng theResearchMalate = new LatLng(14.572888, 120.992933);
-        LatLng theResearchManda = new LatLng(14.409846, 121.037030);
-        LatLng hiPrecisionDelMonte = new LatLng(14.638366, 121.003000);
-        LatLng hiPrecisionRockwell = new LatLng(14.565516, 121.036140);
-        LatLng hiPrecisionVluna = new LatLng(14.637288, 121.050060);
-        LatLng hiPrecisionPasig = new LatLng(14.637288, 121.050060);
-        LatLng hpdTaft = new LatLng(14.572898, 120.990336);
-        LatLng hiPrecisionKalaw = new LatLng(14.582200, 120.982060);
-        LatLng hiPrecisionLasPinas = new LatLng(14.443396, 120.995333);
-        LatLng megaClinic = new LatLng(14.585427, 121.057092);
-        LatLng woodWater = new LatLng(14.640359, 121.069509);
-        LatLng pasigSocial = new LatLng(14.558102, 121.081993);
-        LatLng joseReyes = new LatLng(14.614228, 120.981953);
-        LatLng muntinlupaHealth = new LatLng(14.395086, 121.049811);
-        LatLng batasanSocial = new LatLng(14.686256, 121.088386);
-        LatLng bernardoSocial = new LatLng(14.627913, 121.046640);
-        LatLng theShip = new LatLng(14.585644, 121.048210);
-        LatLng hiPrecisionSucat = new LatLng(14.465718, 121.018302);
-        LatLng hiPrecisionAlabang = new LatLng(14.443396, 120.995333);
-        LatLng hiPrecisionEastAve = new LatLng(14.637579, 121.046333);
-
         createMarker(anglo, "Love Yourself Anglo");
         createMarker(uni, "Love Yourself Uni");
         createMarkerDoh(caloocan, "Caloocan City Social Hygiene Clinic");
@@ -229,6 +285,101 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
     }
+
+    public void caloocanMarker() {
+        createMarkerDoh(caloocan, "Caloocan City Social Hygiene Clinic");
+    }
+
+    public void pasigMarker() {
+        createMarkerDoh(pasig, "Pasig City Health Development");
+        createMarkerDoh(hiPrecisionPasig, "Hi-Precision Diagnostics, Pasig");
+        createMarkerDoh(pasigSocial, "Pasig Social Hygiene Clinic");
+
+    }
+
+    public void quezonCityMarker() {
+        createMarkerDoh(saintCamillus, "Saint Camillus Medical Center");
+        createMarkerDoh(quezonCityHealth, "Quezon City Health Department");
+        createMarkerDoh(quezonCityKlinika, "Quezon City, Klinika Bernardo");
+        createMarkerDoh(aidsSociety, "AIDS Society of the Philippines");
+        createMarkerDoh(hiPrecisionVluna, "Hi-Precision Diagnostics, V.Luna");
+        createMarkerDoh(woodWater, "Woodwater Center for Healing (Camillians)");
+        createMarkerDoh(batasanSocial, "Batasan Social Hygiene Clinic");
+        createMarkerDoh(bernardoSocial, "Bernardo Social Hygiene Clinic");
+        createMarkerDoh(hiPrecisionEastAve, "Hi-Precision Diagnostics, East Avenue");
+        createMarkerDoh(hiPrecisionDelMonte, "Hi-Precision Diagnostics, Del Monte");
+    }
+
+    public void makatiMarker() {
+        createMarkerDoh(makatiSocial, "Makati Social Hygiene Clinic");
+        createMarkerDoh(makatiMed, "Makati Medical Center");
+        createMarkerDoh(hiPrecisionRockwell, "Hi-Precision Diagnostics, Rockwell");
+
+    }
+
+    public void sanJuanMarker() {
+        createMarkerDoh(pedroCruz, "Pedro Cruz Health Center");
+    }
+
+    public void manilaMarker() {
+        createMarkerDoh(manilaSocial, "Manila Social Hygiene Clinic");
+        createMarkerDoh(sanLazaro, "San Lazaro Hospital");
+        createMarkerDoh(philGen, "Philippine General Hospital");
+        createMarkerDoh(theResearchMalate, "The Research Institute for Tropical Medicine (Malate)");
+        createMarkerDoh(hpdTaft, "HPD International, Taft");
+        createMarkerDoh(hiPrecisionKalaw, "Hi-Precision Diagnostics, Kalaw");
+        createMarkerDoh(megaClinic, "Megaclinic-ALS");
+        createMarkerDoh(joseReyes, "Jose Reyes Memorial Medical Center");
+        createMarkerDoh(theShip, "The Ship Foundation");
+        createMarkerDoh(paterosClinical, "Pateros Clinical Laboratory");
+        createMarker(uni, "Love Yourself Uni");
+    }
+
+    public void lasPinasMarker() {
+        createMarkerDoh(lasPinasSocial, "Las Piñas Social Hygiene Clinic");
+        createMarkerDoh(hiPrecisionLasPinas, "Hi-Precision Diagnostics, Las Piñas");
+    }
+
+    public void navotasMarker() {
+        createMarkerDoh(navotasCityHealth, "Navotas City Health Office");
+    }
+
+    public void valenzuelaMarker() {
+        createMarkerDoh(valenzuelaHealth, "Valenzuela Health Office");
+    }
+
+    public void paranaqueMarker() {
+        createMarkerDoh(paranaqueSocial, "Parañaque Social Hygiene Clinic and Wellness Center");
+        createMarkerDoh(hiPrecisionSucat, "Hi-Precision Diangnostics, Sucat");
+    }
+
+    public void pasayMarker() {
+        createMarkerDoh(pasayCitySocial, "Pasay City Social Hygiene Clinic");
+    }
+
+    public void mandaluyongMarker() {
+        createMarker(anglo, "Love Yourself Anglo");
+        createMarkerDoh(mandaluyongCitySocial, "Mandaluyong City Social Hygiene Clinic");
+        createMarkerDoh(mandaluyongCityDrop, "Mandaluyong City -Drop-in Center");
+        createMarkerDoh(theResearchManda, "The Research Institute for Tropical Medicine (Mandaluyong)");
+    }
+
+    public void taguigMarker() {
+        createMarkerDoh(taguigCitySocial, "Taguig City Social Hygiene Clinic");
+        createMarkerDoh(taguigCityDrop, "Taguig City Drop-in Centeer");
+    }
+
+    public void marikinaMarker() {
+        createMarkerDoh(marikinaSocial, "Marikina Social Hygiene Clinic");
+    }
+
+    public void muntinlupaMarker() {
+        createMarkerDoh(theResearchAlabang, "The Research Institute for Tropical Medicine (Alabang)");
+        createMarkerDoh(muntinlupaHealth, "Muntinlupa Health Center");
+        createMarkerDoh(hiPrecisionAlabang, "Hi-Precision Diagnostics Alabang");
+    }
+
+
 }
 
 

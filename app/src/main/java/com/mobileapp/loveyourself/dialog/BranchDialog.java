@@ -45,6 +45,13 @@ public class BranchDialog extends DialogFragment {
                     "12 NN TO 7PM\n" + "Sundays\n" +
                     "9 AM TO 2 PM\n" + "Monday and Tuesday\n" + "Closed");
             textDescription.setText("The clinic is located conveniently close to LRT-1 Gil Puyat or Buendia station on the northbound lane of Taft Avenue.");
+        }else if (getArguments().getString("title").equals("caloocanCitySocialHygienicClinic")) {
+            textTitle.setText("Caloocan City Social Hygiene Clinic");
+            textLocation.setText("A Mabini St., Caloocan City Hall");
+            textPhone.setText("(02)288-8811");
+            textClinicHours.setText("Monday to Friday\n" +
+                    "8:00 am to 5:00 pm");
+            textDescription.setText("Test Result: 15-20 minutes");
         }
         return view;
     }

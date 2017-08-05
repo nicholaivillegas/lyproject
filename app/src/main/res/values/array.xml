@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city">
+        <item>All</item>
+        <item>Caloocan City</item>
+        <item>Las Pinas City</item>
+        <item>Makati City</item>
+        <item>Mandaluyong City</item>
+        <item>Manila City</item>
+        <item>Marikina City</item>
+        <item>Muntinlupa City</item>
+        <item>Navotas City</item>
+        <item>Paranaque City</item>
+        <item>Pasay City</item>
+        <item>Pasig City</item>
+        <item>Quezon City</item>
+        <item>San Juan City</item>
+        <item>Taguig City</item>
+        <item>Valenzuela City</item>
+    </string-array>
+</resources>
+
+

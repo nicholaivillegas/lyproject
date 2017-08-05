@@ -11,7 +11,6 @@ public class Reservation {
     public String firstName;
     public String lastName;
     public String cityOfResidence;
-    public String cityOfWork;
     public String howDidYouLearn;
     public String mobile;
     public String email;
@@ -25,20 +24,21 @@ public class Reservation {
     public String hindrance7;
     public String hindrance8;
     public String testingLocation;
-    public String testingDate;
+    public String testingDateYear;
+    public String testingDateMonth;
+    public String testingDateDay;
     public String other;
     public String extra;
 
     public Reservation() {
     }
 
-    public Reservation(String id, String timestamp, String firstName, String lastName, String cityOfResidence, String cityOfWork, String howDidYouLearn, String mobile, String email, String language, String hindrance1, String hindrance2, String hindrance3, String hindrance4, String hindrance5, String hindrance6, String hindrance7, String hindrance8, String testingLocation, String testingDate, String other, String extra) {
+    public Reservation(String id, String timestamp, String firstName, String lastName, String cityOfResidence, String howDidYouLearn, String mobile, String email, String language, String hindrance1, String hindrance2, String hindrance3, String hindrance4, String hindrance5, String hindrance6, String hindrance7, String hindrance8, String testingLocation, String testingDateYear, String testingDateMonth, String testingDateDay, String other, String extra) {
         this.id = id;
         this.timestamp = timestamp;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cityOfResidence = cityOfResidence;
-        this.cityOfWork = cityOfWork;
         this.howDidYouLearn = howDidYouLearn;
         this.mobile = mobile;
         this.email = email;
@@ -52,7 +52,9 @@ public class Reservation {
         this.hindrance7 = hindrance7;
         this.hindrance8 = hindrance8;
         this.testingLocation = testingLocation;
-        this.testingDate = testingDate;
+        this.testingDateYear = testingDateYear;
+        this.testingDateMonth = testingDateMonth;
+        this.testingDateDay = testingDateDay;
         this.other = other;
         this.extra = extra;
     }
@@ -95,14 +97,6 @@ public class Reservation {
 
     public void setCityOfResidence(String cityOfResidence) {
         this.cityOfResidence = cityOfResidence;
-    }
-
-    public String getCityOfWork() {
-        return cityOfWork;
-    }
-
-    public void setCityOfWork(String cityOfWork) {
-        this.cityOfWork = cityOfWork;
     }
 
     public String getHowDidYouLearn() {
@@ -209,12 +203,28 @@ public class Reservation {
         this.testingLocation = testingLocation;
     }
 
-    public String getTestingDate() {
-        return testingDate;
+    public String getTestingDateYear() {
+        return testingDateYear;
     }
 
-    public void setTestingDate(String testingDate) {
-        this.testingDate = testingDate;
+    public void setTestingDateYear(String testingDateYear) {
+        this.testingDateYear = testingDateYear;
+    }
+
+    public String getTestingDateMonth() {
+        return testingDateMonth;
+    }
+
+    public void setTestingDateMonth(String testingDateMonth) {
+        this.testingDateMonth = testingDateMonth;
+    }
+
+    public String getTestingDateDay() {
+        return testingDateDay;
+    }
+
+    public void setTestingDateDay(String testingDateDay) {
+        this.testingDateDay = testingDateDay;
     }
 
     public String getOther() {

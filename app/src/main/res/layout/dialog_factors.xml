@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="CHECK THE FOLLOWING FACTORS"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/check_receptive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Receptive Anal/Vaginal Sex without protection" />
+
+    <CheckBox
+        android:id="@+id/check_accidental"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Accidental needle prick" />
+
+    <CheckBox
+        android:id="@+id/check_shared"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shared needle" />
+
+    <CheckBox
+        android:id="@+id/check_intravenous"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Intravenous drug use" />
+
+    <CheckBox
+        android:id="@+id/check_received"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Received blood transfusion" />
+
+    <CheckBox
+        android:id="@+id/check_insertive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insertive Anal/Vaginal sex with protection" />
+
+    <CheckBox
+        android:id="@+id/check_oral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Receptive/insertive oral sex" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_selector"
+        android:text="Submit" />
+
+
+</LinearLayout>
