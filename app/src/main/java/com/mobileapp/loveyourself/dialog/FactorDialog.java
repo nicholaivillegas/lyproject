@@ -16,8 +16,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mobileapp.loveyourself.Factors;
 import com.mobileapp.loveyourself.R;
+import com.mobileapp.loveyourself.Reservation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +61,8 @@ public class FactorDialog extends DialogFragment {
     private int day;
     private String description = "";
 
+    private DatabaseReference mDatabase;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +78,7 @@ public class FactorDialog extends DialogFragment {
         year = Integer.parseInt(getArguments().getString("year"));
         month = Integer.parseInt(getArguments().getString("month"));
         day = Integer.parseInt(getArguments().getString("day"));
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void setDialogWindow() {
@@ -93,11 +103,12 @@ public class FactorDialog extends DialogFragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @OnClick(R.id.button_submit)
     public void onViewClicked() {
+        daysExposure = 90;
         if (checkReceptive.isChecked()) {
             daysExposure = 10;
             description = description + "Receptive Anal/ Vaginal Sex Without Protectio \n";
         }
-        if (checkInsertive.isChecked()) {
+        if (checkAccidental.isChecked()) {
             daysExposure = 10;
             description = description + "Accidental Needle Prick \n";
         }
@@ -121,6 +132,9 @@ public class FactorDialog extends DialogFragment {
             daysExposure = 60;
             description = description + "Receptive / Insertive Oral Sex";
         }
+
+        saveProfile();
+
 //improve timing
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(year, month, day, 0, 0);
@@ -136,5 +150,38 @@ public class FactorDialog extends DialogFragment {
                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
                 .putExtra(Intent.EXTRA_EMAIL, "francistancapstone@gmail.com");
         startActivity(intent);
+
+        dismiss();
+    }
+
+    //    String id,
+//    String dateRecorded,
+//    String description,
+//    String checkReceptive,
+//    String checkAccidental,
+//    String checkShared,
+//    String checkIntravenous,
+//    String checkReceived,
+//    String checkInsertive,
+//    String checkOral,
+//    String other
+    private void saveProfile() {
+        Long tsLong = System.currentTimeMillis() / 1000;
+        String timestamp = tsLong.toString();
+        Factors factors = new Factors(FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                String.valueOf(year),
+                String.valueOf(month),
+                String.valueOf(day),
+                description,
+                String.valueOf(checkReceptive.isChecked()),
+                String.valueOf(checkAccidental.isChecked()),
+                String.valueOf(checkShared.isChecked()),
+                String.valueOf(checkIntravenous.isChecked()),
+                String.valueOf(checkReceived.isChecked()),
+                String.valueOf(checkInsertive.isChecked()),
+                String.valueOf(checkOral.isChecked()),
+                "");
+        mDatabase.child("factors").child(String.valueOf(timestamp)).setValue(factors);
+        Toast.makeText(getActivity(), "Saved", Toast.LENGTH_LONG).show();
     }
 }

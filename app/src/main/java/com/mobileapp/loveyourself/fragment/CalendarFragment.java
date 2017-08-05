@@ -1,16 +1,17 @@
 package com.mobileapp.loveyourself.fragment;
 
 import android.content.DialogInterface;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,27 +20,52 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mobileapp.loveyourself.Factors;
 import com.mobileapp.loveyourself.R;
 import com.mobileapp.loveyourself.Reservation;
-import com.mobileapp.loveyourself.UserInfo;
 import com.mobileapp.loveyourself.dialog.FactorDialog;
-import com.mobileapp.loveyourself.dialog.ReservationDialog;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CalendarFragment extends Fragment {
 
     MaterialCalendarView calendarView;
+    @BindView(R.id.circleImageView)
+    CircleImageView circleImageView;
+    @BindView(R.id.text_reservation)
+    TextView textReservation;
+    @BindView(R.id.text_reservation1)
+    TextView textReservation1;
+    @BindView(R.id.card_reservation)
+    CardView cardReservation;
+    @BindView(R.id.circleImageView_factor)
+    CircleImageView circleImageViewFactor;
+    @BindView(R.id.text_factor)
+    TextView textFactor;
+    @BindView(R.id.text_factor1)
+    TextView textFactor1;
+    @BindView(R.id.card_factor)
+    CardView cardFactor;
+    Unbinder unbinder;
+    private Date dateSelected;
     private DatabaseReference mDatabase;
     private DatabaseReference myRef;
     private ChildEventListener ref;
     private Reservation model;
-    private Date dateSelected;
+
+    private DatabaseReference mDatabaseFactors;
+    private DatabaseReference myRefFactors;
+    private ChildEventListener refFactors;
+    private Factors modelFactors;
 
     @Nullable
     @Override
@@ -47,10 +73,11 @@ public class CalendarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         calendarView = (MaterialCalendarView) view.findViewById(R.id.calendarView);
         loadFields();
-
+        loadFactors();
 
         calendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_MULTIPLE);
 
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -66,6 +93,8 @@ public class CalendarFragment extends Fragment {
                     try {
                         model = dataSnapshot.getValue(Reservation.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            textReservation.setText("Reservation @ " + model.getTestingLocation());
+                            textReservation1.setText("Date: " + model.getTestingDateYear() + "/" + model.getTestingDateMonth() + "/" + model.getTestingDateDay());
                             final int year = Integer.parseInt(model.getTestingDateYear());
                             final int month = Integer.parseInt(model.getTestingDateMonth());
                             final int day = Integer.parseInt(model.getTestingDateDay());
@@ -132,4 +161,68 @@ public class CalendarFragment extends Fragment {
         });
     }
 
+    private void loadFactors() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRefFactors = database.getReference("factors");
+        mDatabaseFactors = FirebaseDatabase.getInstance().getReference();
+        refFactors = myRefFactors.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+                    try {
+                        modelFactors = dataSnapshot.getValue(Factors.class);
+                        Date date = new Date();
+                        if (modelFactors.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            textFactor.setText("Activity");
+                            textFactor1.setText("Click here for more...");
+                            final int year = Integer.parseInt(modelFactors.getDateRecordedYear());
+                            final int month = Integer.parseInt(modelFactors.getDateRecordedMonth());
+                            final int day = Integer.parseInt(modelFactors.getDateRecordedDate());
+                            date = new Date(year - 1900, month, day);
+                            calendarView.setDateSelected(date, true);
+                            calendarView.setSelectionColor(R.color.colorPrimary);
+                        } else
+                            calendarView.setDateSelected(date, false);
+                    } catch (Exception ex) {
+                        Log.e("RAWR", ex.getMessage());
+                    }
+                }
+            }
+
+            // This function is called each time a child item is removed.
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("TAG:", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.card_reservation, R.id.card_factor})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.card_reservation:
+                //LOAD DETAILS
+                break;
+            case R.id.card_factor:
+                //LOAD DETAILS
+                break;
+        }
+    }
 }

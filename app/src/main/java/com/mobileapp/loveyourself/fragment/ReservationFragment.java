@@ -147,11 +147,13 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.button_submit:
                 if (ctr == 0) {
+                    buttonSubmit.setText("READ REMINDERS");
                     ReservationDialog reservationDialog = new ReservationDialog();
                     reservationDialog.show(getActivity().getFragmentManager(), "Reservation Dialog");
                     ctr = 1;
                 } else {
                     //Do saving
+                    buttonSubmit.setText("SUBMIT");
                     getFieldsInformation();
                     saveProfile();
                 }
