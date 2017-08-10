@@ -22,6 +22,582 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="New cases of HIV in the Philippines hit record high with 1,098 in May 2017"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, August 02, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Nel Lee Hadlocon An alarming increase of HIV cases, with now an average of 35 per day, has been reported to the HIV/AIDS and ART Registry of the Philippines (HARP) in May 2017. This is 48 percent higher compared with same time last year and is the highest recorded number of cases since 1984. Sexual contact continues as the top mode of transmission. Nine hundred eighteen (918) reported cases were men having sex with men. Five hundred fifty-eight (558) of these cases were through homosexual contact. Bisexual contact accounted for...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS: The A to E of Being Positive to a Healthy Lifestyle"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, July 06, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Reiner “Meow” Grospe “Am I going to die soon?” This is one of the first few questions a person newly diagnosed as positive with HIV would usually ask their counselor/healthcare provider. The answer is a resounding “No.” Being diagnosed as HIV positive means a person has the Human Immunodeficiency Virus (HIV) in their body, and it doesn’t mean the person will immediately die of the virus. How soon a person living with HIV (PLHIV) will die...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The History of LGBTQ+ Visibility in the Philippines"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, June 22, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carlos Diego A. Rozul This month of June marks a significant event within the LGBTQ+ community around the world. It was in June 1969 when the Stonewall Riot in Manhattan, New York ultimately turned the tides in the Gay Liberation Movement in the United States, which is why the world celebrates LGBT Pride in the month of June [1]. Filipino LGBT youth today may not be aware of the history of a community where they belong. Within the Philippines'...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Batch Marcelino, LoveYourself's 17th batch of volunteers, joins the fight against HIV"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, June 21, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Mark Angello Ganon June 17, 2017 – 46 new recruits joined LoveYourself’s growing number of volunteers. Held at the People’s Hall of SM Aura Premier, the orientation, headed by LoveU (LoveYourself’s Corporate University) Administrator John Cedric Santiago, welcomed the new volunteers as they embraced the organization’s HIV awareness and prevention advocacy. Batch Marcelino orientation at the People’s Hall of SM Aura Premier The Origins Similar...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS -- Yes, I am Positive"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, June 14, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Carlos Diego A. Rozul Everyone has talked about a particular status in his or her life, be it their relationship status, their financial status, and heck people talk about their problems on their Facebook status all the time! But one thing that’s rarely talked about is one’s HIV status. Despite its relevance today it is still greatly stigmatized and has been thought of as taboo by many. This monthly column aims to help facilitate discussion...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2017 Holy Week Clinic Schedule and ARV Protocols"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, April 12, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="For HIV testing clinics For the Holy Week, the LoveYourself Anglo and Uni clinics will follow this special schedule: April 12, 2017 (Wed) - OPEN April 13 to 16, 2017 (Thu - Sun) - CLOSED Clinic operations will resume on April 19, 2017 (Wed). Please be guided accordingly. Thank you! You can also check out the regular clinic schedule and our clinic locations here. For HIV treatment hub at Anglo To give way to the Holy Week,...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LoveYourself pays tribute to its heritage with its 16th batch of volunteers"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, April 12, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Mark Angello Ganon Fresh faces dotted the People’s Hall of SM Aura Premier last April 8 as LoveYourself welcomed Batch Guinto, this year’s first set of recruits. Rising up to the call of being HIV awareness and prevention advocates, 42 individuals underwent a thorough screening process and are now on their way to creating ripples of positive change. Photo by Joma Ragragio  The Recruitment team, headed by Pete Tan, oversaw the screening...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS -- HIV Myths and Fictions, Debunked!"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Friday, April 07, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Brethren Facts about HIV (Human Immunodeficiency Virus), like what it is and how it is transmitted, are readily available almost everywhere, especially on the internet. Yet there are quite a number of myths around HIV that remain to cloud people's perceptions about it. These are myths you might have read in a web article or in your social media feed. Someone posted on Facebook a few years back about HIV-contaminated bananas. Though I...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="JOB OPENING: Treatment Hub Physician"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, March 29, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LoveYourself Inc. is looking to hire (1) Treatment Hub Physician for its HIV treatment facility. ESSENTIAL JOB FUNCTIONS As a Treatment Hub Physician, you will be expected to perform the following functions: 1. Manage medical conditions of adult HIV patients enrolled at the treatment hub. 2. Referral of complicated cases to the appropriate specialists/centers. 3. Provision of documents like clinical abstracts and medical certificates to patients,...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Volunteer Spotlight: Danvic, Ruben, Leo, and Aaron | Bright Minds, Big Hearts"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, March 29, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Jean Natividad Ask anyone what the noblest profession is, and there's a good chance they'll say
+
+                It should come as no surprise. Educators, after all, are assigned the Herculean task
+                of shaping people's minds. While not all bearing the title are able to live up to
+                the high standards of their calling, there are those who go above and beyond to
+                fulfill their duties. In LoveYourself, educators exist, too. Counselors, for
+                example,...
+                and
+                ART Registry of the Philippines (HARP) reported there was an average of 26 new cases
+                each day in the same year. But out of this number, how many represent the occurrence
+                of HIV (Human Immunodeficiency...
+                "
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="JOB OPENING: Nurses"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, March 28, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LoveYourself, Inc. is looking to hire (2) nurses for its clinics. ESSENTIAL JOB FUNCTIONS: Provide initial assessment to clients (e.g. vital signs and history taking) Assist physicians with clinic procedures and treatments Deal with the management of sexually transmitted infections and administer prescribed medication and treatments Provide Pre and Post counseling to clients Perform other related functions as may be assigned by the nurse...and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS -- Women and HIV: 4 Reasons We Should Pay Attention to the Numbers"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, March 23, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Reiner “Meow” Grospe Photo taken at Bale Angeleño, Balibago, Angeles City, a government center that offers reproductive health care, STI screening, and treatment, run by the local government of Angeles City In December 2016, the HIV/AIDS and ART Registry of the Philippines (HARP) reported there was an average of 26 new cases each day in the same year. But out of this number, how many represent the occurrence of HIV (Human Immunodeficiency..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Triangle of Self-Care: Understanding the Window Period "
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -35,7 +611,7 @@
 
                 <ImageView
                     android:id="@+id/image_news1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -82,7 +658,7 @@
 
                 <ImageView
                     android:id="@+id/image_news2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -128,7 +704,7 @@
 
                 <ImageView
                     android:id="@+id/image_news3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -174,7 +750,7 @@
 
                 <ImageView
                     android:id="@+id/image_news4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -220,7 +796,7 @@
 
                 <ImageView
                     android:id="@+id/image_news5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView

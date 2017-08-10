@@ -66,6 +66,8 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     private DatabaseReference myRef;
     private ChildEventListener ref;
 
+    UserInfo model;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -156,6 +158,7 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     buttonSubmit.setText("SUBMIT");
                     getFieldsInformation();
                     saveProfile();
+                    buttonSubmit.setEnabled(false);
                 }
 
                 break;
@@ -310,7 +313,27 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
 
     private void saveProfile() {
 //        id, timestamp, firstName, lastName, cityOfResidence, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, testingDate, other, extra
-        Reservation user = new Reservation(FirebaseAuth.getInstance().getCurrentUser().getUid(), timestamp, firstName, lastName, cityOfResidence, howDidYouLearn, mobile, email, language, hindrance1, hindrance2, hindrance3, hindrance4, hindrance5, hindrance6, hindrance7, hindrance8, testingLocation, String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth()), String.valueOf(datepicker.getDayOfMonth()), other, extra);
+        Reservation user = new Reservation(FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                timestamp,
+                model.getFirstName(),
+                model.getLastName(),
+                model.getLocation(),
+                howDidYouLearn,
+                model.getNumber(),
+                model.getEmail(),
+                language,
+                hindrance1,
+                hindrance2,
+                hindrance3,
+                hindrance4,
+                hindrance5,
+                hindrance6,
+                hindrance7,
+                hindrance8,
+                testingLocation,
+                String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth()), String.valueOf(datepicker.getDayOfMonth()),
+                other,
+                extra);
         mDatabase.child("reservations").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
         Toast.makeText(getContext(), "Reservation Successful", Toast.LENGTH_LONG).show();
     }
@@ -325,13 +348,14 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 if (dataSnapshot != null && dataSnapshot.getValue() != null) {
                     try {
-                        UserInfo model = dataSnapshot.getValue(UserInfo.class);
+                        model = dataSnapshot.getValue(UserInfo.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                             Toast.makeText(getContext(), model.getFirstName(), Toast.LENGTH_LONG).show();
 
-                            editFname.setText(model.getFirstName());
-                            editLname.setText(model.getLastName());
-                            editCityResidence.setText(model.getLocation());
+//                            editFname.setText(model.getFirstName());
+//                            editLname.setText(model.getLastName());
+//                            editCityResidence.setText(model.getLocation());
+
                         }
                     } catch (Exception ex) {
                         Log.e("RAWR", ex.getMessage());

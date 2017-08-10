@@ -29,13 +29,15 @@
                     android:gravity="center"
                     android:text="PERSONAL INFORMATION"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/edit_first_name"
@@ -61,7 +63,8 @@
                         android:hint="Last Name"
                         android:inputType="textCapWords"
                         android:maxLines="1"
-                        android:textColorHint="@color/colorLightPrimary" />
+                        android:textColorHint="@color/colorLightPrimary"
+                        android:visibility="gone" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -69,7 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/edit_city_residence"
@@ -85,7 +89,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="CUSTOMER PREFERENCE"
                     android:textSize="20sp"
@@ -170,13 +173,15 @@
                     android:paddingLeft="10dp"
                     android:text="Preferred Means of Communication"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:visibility="gone" />
 
                 <CheckBox
                     android:id="@+id/check_communication_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mobile Phone" />
+                    android:text="Mobile Phone"
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/edit_communication_mobile"
@@ -196,7 +201,8 @@
                     android:id="@+id/check_communication_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="E-mail" />
+                    android:text="E-mail"
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/edit_communication_email"
@@ -389,7 +395,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_selector"
                     android:text="READ REMINDERS"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 

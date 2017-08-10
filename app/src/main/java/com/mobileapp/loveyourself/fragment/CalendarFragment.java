@@ -67,6 +67,10 @@ public class CalendarFragment extends Fragment {
     private ChildEventListener refFactors;
     private Factors modelFactors;
 
+    private int selectedYear;
+    private int selectedMonth;
+    private int selectedDay;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,7 +80,41 @@ public class CalendarFragment extends Fragment {
         loadFactors();
 
         calendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_MULTIPLE);
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull final CalendarDay date, boolean selected) {
+                if ((date.getYear() == selectedYear) && (date.getMonth() == selectedMonth) && (date.getDay() == selectedDay)) {
+                    calendarView.setSelectedDate(date);
+                } else {
+                    calendarView.setDateSelected(date, false);
+                }
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                FactorDialog factorDialog = new FactorDialog();
+                                Bundle args = new Bundle();
+                                args.putString("year", String.valueOf(date.getYear()));
+                                args.putString("month", String.valueOf(date.getMonth()));
+                                args.putString("day", String.valueOf(date.getDay()));
+                                factorDialog.setArguments(args);
+                                factorDialog.show(getActivity().getFragmentManager(), "Factor Dialog");
+                                break;
 
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Do you want to add an activity?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+
+            }
+        });
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -93,49 +131,19 @@ public class CalendarFragment extends Fragment {
                     try {
                         model = dataSnapshot.getValue(Reservation.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            cardReservation.setVisibility(View.VISIBLE);
                             textReservation.setText("Reservation @ " + model.getTestingLocation());
                             textReservation1.setText("Date: " + model.getTestingDateYear() + "/" + model.getTestingDateMonth() + "/" + model.getTestingDateDay());
                             final int year = Integer.parseInt(model.getTestingDateYear());
                             final int month = Integer.parseInt(model.getTestingDateMonth());
                             final int day = Integer.parseInt(model.getTestingDateDay());
+
+                            selectedYear = year;
+                            selectedMonth = month;
+                            selectedDay = day;
                             Date date = new Date(year - 1900, month, day);
                             calendarView.setDateSelected(date, true);
-                            calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
-                                @Override
-                                public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull final CalendarDay date, boolean selected) {
-                                    if ((date.getYear() == year) && (date.getMonth() == month) && (date.getDay() == day)) {
-                                        Toast.makeText(getContext(), "SAKTO", Toast.LENGTH_SHORT).show();
-                                        calendarView.setSelectedDate(date);
-                                    } else {
-                                        calendarView.setDateSelected(date, false);
-                                    }
-                                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            switch (which) {
-                                                case DialogInterface.BUTTON_POSITIVE:
-                                                    FactorDialog factorDialog = new FactorDialog();
-                                                    Bundle args = new Bundle();
-                                                    args.putString("year", String.valueOf(date.getYear()));
-                                                    args.putString("month", String.valueOf(date.getMonth()));
-                                                    args.putString("day", String.valueOf(date.getDay()));
-                                                    factorDialog.setArguments(args);
-                                                    factorDialog.show(getActivity().getFragmentManager(), "Factor Dialog");
-                                                    break;
 
-                                                case DialogInterface.BUTTON_NEGATIVE:
-                                                    //No button clicked
-                                                    break;
-                                            }
-                                        }
-                                    };
-
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                    builder.setMessage("Do you want to add an activity?").setPositiveButton("Yes", dialogClickListener)
-                                            .setNegativeButton("No", dialogClickListener).show();
-
-                                }
-                            });
                         }
                     } catch (Exception ex) {
                         Log.e("RAWR", ex.getMessage());
@@ -174,11 +182,15 @@ public class CalendarFragment extends Fragment {
                         modelFactors = dataSnapshot.getValue(Factors.class);
                         Date date = new Date();
                         if (modelFactors.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            cardFactor.setVisibility(View.VISIBLE);
                             textFactor.setText("Activity");
                             textFactor1.setText("Click here for more...");
                             final int year = Integer.parseInt(modelFactors.getDateRecordedYear());
                             final int month = Integer.parseInt(modelFactors.getDateRecordedMonth());
                             final int day = Integer.parseInt(modelFactors.getDateRecordedDate());
+                            selectedYear = year;
+                            selectedMonth = month;
+                            selectedDay = day;
                             date = new Date(year - 1900, month, day);
                             calendarView.setDateSelected(date, true);
                             calendarView.setSelectionColor(R.color.colorPrimary);
