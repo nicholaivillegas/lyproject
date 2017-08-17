@@ -133,6 +133,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
+                centerScreen();
             }
 
         });
@@ -161,176 +162,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-
+        mMap.setOnMarkerClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
+        mMap.setOnInfoWindowCloseListener(this);
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
 
         addMarkerLuzon();
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(14.609054, 121.022257) , 10.7f) );
+//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(14.6091, 121.0223),15));
 
-        centerScreen();
-        mMap.setOnMarkerClickListener(this);
-        mMap.setOnInfoWindowClickListener(this);
-        mMap.setOnInfoWindowCloseListener(this);
     }
 
     public void centerScreen() {
-        CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(14.6091, 121.0223));
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(11);
+        CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(14.609054, 121.022257));
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(10.7f);
 
         mMap.moveCamera(center);
         mMap.animateCamera(zoom);
     }
 
-    @Override
-    public void onInfoWindowClick(Marker marker) {
-        BranchDialog branchDialog = new BranchDialog();
-        Bundle bundle = new Bundle();
-        switch (marker.getTitle()) {
-            case "Love Yourself Anglo":
-                bundle.putString("title", "anglo");
-                break;
-            case "Love Yourself Uni":
-                bundle.putString("title", "uni");
-                break;
-            case "Caloocan City Social Hygiene Clinic":
-                bundle.putString("title", "caloocanCitySocialHygienicClinic");
-                break;
-            case "Pasig City Health Development":
-                bundle.putString("title", "pasigCityHealthDevelopment");
-                break;
-            case "Saint Camillus Medical Center":
-                bundle.putString("title", "saintCamillusMedicalCenter");
-                break;
-            case "Quezon City Health Department":
-                bundle.putString("title", "quezonCityHealthDepartment");
-                break;
-            case "Quezon City, Klinika Bernardo":
-                bundle.putString("title", "quezonCityKlinikaBernardo");
-                break;
-            case "Makati Social Hygiene Clinic":
-                bundle.putString("title", "makatiSocialHygieneClinic");
-                break;
-            case "Pedro Cruz Health Center":
-                bundle.putString("title", "pedroCruzHealthCenter");
-                break;
-            case "Manila Social Hygiene Clinic":
-                bundle.putString("title", "manilaSocialHygieneClinic");
-                break;
-            case "Las Piñas Social Hygiene Clinic":
-                bundle.putString("title", "lasPinasDanielFajardoSocialHygieneClinic");
-                break;
-            case "Navotas City Health Office":
-                bundle.putString("title", "navotasCityHealthOffice");
-                break;
-            case "Valenzuela Health Office":
-                bundle.putString("title", "valenzuelaHealthOffice");
-                break;
-            case "Parañaque Social Hygiene Clinic and Wellness Center":
-                bundle.putString("title", "paranaqueSocialHygieneClinicandWellnessCenter");
-                break;
-            case "Pasay City Social Hygiene Clinic":
-                bundle.putString("title", "pasayCitySocialHygieneClinic");
-                break;
-            case "Mandaluyong City Social Hygiene Clinic":
-                bundle.putString("title", "mandaluyongCitySocialHygieneClinic");
-                break;
-            case "Mandaluyong City -Drop-in Center":
-                bundle.putString("title", "mandaluyongCityDropinCenter");
-                break;
-            case "Taguig City Social Hygiene Clinic":
-                bundle.putString("title", "taguigCitySocialHygieneClinic");
-                break;
-            case "Taguig City Drop-in Centeer":
-                bundle.putString("title", "taguigCityDropinCenter");
-                break;
-            case "Pateros Clinical Laboratory":
-                bundle.putString("title", "paterosClinicalLaboratory");
-                break;
-            case "Marikina Social Hygiene Clinic":
-                bundle.putString("title", "marikinaSocialHygieneClinic");
-                break;
-            case "AIDS Society of the Philippines":
-                bundle.putString("title", "aIDSSocietyofthePhilippines");
-                break;
-            case "San Lazaro Hospital":
-                bundle.putString("title", "sanLazaroHospital");
-                break;
-            case "Philippine General Hospital":
-                bundle.putString("title", "philippineGeneralHospital");
-                break;
-            case "Makati Medical Center":
-                bundle.putString("title", "makatiMedicalCenter");
-                break;
-            case "The Research Institute for Tropical Medicine (Alabang)":
-                bundle.putString("title", "theResearchInstituteforTropicalMedicineAlabang");
-                break;
-            case "The Research Institute for Tropical Medicine (Malate)":
-                bundle.putString("title", "theResearchInstituteforTropicalMedicineMalate");
-                break;
-            case "The Research Institute for Tropical Medicine (Mandaluyong)":
-                bundle.putString("title", "theResearchInstituteforTropicalMedicineMandaluyong");
-                break;
-            case "Hi-Precision Diagnostics, Del Monte":
-                bundle.putString("title", "hiPrecisionDiagnosticsDelMonte");
-                break;
-            case "Hi-Precision Diagnostics, Rockwell":
-                bundle.putString("title", "hiPrecisionDiagnosticsRockwell");
-                break;
-            case "Hi-Precision Diagnostics, V.Luna":
-                bundle.putString("title", "hiPrecisionDiagnosticsVLuna");
-                break;
-            case "Hi-Precision Diagnostics, Pasig":
-                bundle.putString("title", "hiPrecisionDiagnosticsPasig");
-                break;
-            case "HPD International, Taft":
-                bundle.putString("title", "hPDInternationalTaft");
-                break;
-            case "Hi-Precision Diagnostics, Kalaw":
-                bundle.putString("title", "hiPrecisionDiagnosticsKalaw");
-                break;
-            case "Hi-Precision Diagnostics, Las Piñas":
-                bundle.putString("title", "hiPrecisionDiagnosticsLasPinas");
-                break;
-            case "Megaclinic-ALS":
-                bundle.putString("title", "megaclinicALS");
-                break;
-            case "Woodwater Center for Healing (Camillians)":
-                bundle.putString("title", "woodwaterCenterforHealing");
-                break;
-            case "Pasig Social Hygiene Clinic":
-                bundle.putString("title", "pasigSocialHygieneClinic");
-                break;
-            case "Jose Reyes Memorial Medical Center":
-                bundle.putString("title", "joseReyesMemorialMedicalCenter");
-                break;
-            case "Muntinlupa Health Center":
-                bundle.putString("title", "muntinlupaHealthCenter");
-                break;
-            case "Batasan Social Hygiene Clinic":
-                bundle.putString("title", "batasanSocialHygieneClinic");
-                break;
-            case "Bernardo Social Hygiene Clinic":
-                bundle.putString("title", "quezonCityBernardoSocialHygieneClinic");
-                break;
-            case "The Ship Foundation":
-                bundle.putString("title", "theShipFoundation");
-                break;
-            case "Hi-Precision Diangnostics, Sucat":
-                bundle.putString("title", "hiPrecisionDiangnosticsSucat");
-                break;
-            case "Hi-Precision Diagnostics Alabang":
-                bundle.putString("title", "hiPrecisionDiangnosticsAlabang");
-                break;
-            case "Hi-Precision Diagnostics, East Avenue":
-                bundle.putString("title", "hiPrecisionDiangnosticsEastAvenue");
-                break;
-        }
-
-        branchDialog.setArguments(bundle);
-        branchDialog.show(getFragmentManager(), "Branch Dialog");
-
-    }
 
     @Override
     public void onInfoWindowClose(Marker marker) {
@@ -511,6 +363,154 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        BranchDialog branchDialog = new BranchDialog();
+        Bundle bundle = new Bundle();
+        switch (marker.getTitle()) {
+            case "Love Yourself Anglo":
+                bundle.putString("title", "anglo");
+                break;
+            case "Love Yourself Uni":
+                bundle.putString("title", "uni");
+                break;
+            case "Caloocan City Social Hygiene Clinic":
+                bundle.putString("title", "caloocanCitySocialHygienicClinic");
+                break;
+            case "Pasig City Health Development":
+                bundle.putString("title", "pasigCityHealthDevelopment");
+                break;
+            case "Saint Camillus Medical Center":
+                bundle.putString("title", "saintCamillusMedicalCenter");
+                break;
+            case "Quezon City Health Department":
+                bundle.putString("title", "quezonCityHealthDepartment");
+                break;
+            case "Quezon City, Klinika Bernardo":
+                bundle.putString("title", "quezonCityKlinikaBernardo");
+                break;
+            case "Makati Social Hygiene Clinic":
+                bundle.putString("title", "makatiSocialHygieneClinic");
+                break;
+            case "Pedro Cruz Health Center":
+                bundle.putString("title", "pedroCruzHealthCenter");
+                break;
+            case "Manila Social Hygiene Clinic":
+                bundle.putString("title", "manilaSocialHygieneClinic");
+                break;
+            case "Las Piñas Social Hygiene Clinic":
+                bundle.putString("title", "lasPinasDanielFajardoSocialHygieneClinic");
+                break;
+            case "Navotas City Health Office":
+                bundle.putString("title", "navotasCityHealthOffice");
+                break;
+            case "Valenzuela Health Office":
+                bundle.putString("title", "valenzuelaHealthOffice");
+                break;
+            case "Parañaque Social Hygiene Clinic and Wellness Center":
+                bundle.putString("title", "paranaqueSocialHygieneClinicandWellnessCenter");
+                break;
+            case "Pasay City Social Hygiene Clinic":
+                bundle.putString("title", "pasayCitySocialHygieneClinic");
+                break;
+            case "Mandaluyong City Social Hygiene Clinic":
+                bundle.putString("title", "mandaluyongCitySocialHygieneClinic");
+                break;
+            case "Mandaluyong City -Drop-in Center":
+                bundle.putString("title", "mandaluyongCityDropinCenter");
+                break;
+            case "Taguig City Social Hygiene Clinic":
+                bundle.putString("title", "taguigCitySocialHygieneClinic");
+                break;
+            case "Taguig City Drop-in Centeer":
+                bundle.putString("title", "taguigCityDropinCenter");
+                break;
+            case "Pateros Clinical Laboratory":
+                bundle.putString("title", "paterosClinicalLaboratory");
+                break;
+            case "Marikina Social Hygiene Clinic":
+                bundle.putString("title", "marikinaSocialHygieneClinic");
+                break;
+            case "AIDS Society of the Philippines":
+                bundle.putString("title", "aIDSSocietyofthePhilippines");
+                break;
+            case "San Lazaro Hospital":
+                bundle.putString("title", "sanLazaroHospital");
+                break;
+            case "Philippine General Hospital":
+                bundle.putString("title", "philippineGeneralHospital");
+                break;
+            case "Makati Medical Center":
+                bundle.putString("title", "makatiMedicalCenter");
+                break;
+            case "The Research Institute for Tropical Medicine (Alabang)":
+                bundle.putString("title", "theResearchInstituteforTropicalMedicineAlabang");
+                break;
+            case "The Research Institute for Tropical Medicine (Malate)":
+                bundle.putString("title", "theResearchInstituteforTropicalMedicineMalate");
+                break;
+            case "The Research Institute for Tropical Medicine (Mandaluyong)":
+                bundle.putString("title", "theResearchInstituteforTropicalMedicineMandaluyong");
+                break;
+            case "Hi-Precision Diagnostics, Del Monte":
+                bundle.putString("title", "hiPrecisionDiagnosticsDelMonte");
+                break;
+            case "Hi-Precision Diagnostics, Rockwell":
+                bundle.putString("title", "hiPrecisionDiagnosticsRockwell");
+                break;
+            case "Hi-Precision Diagnostics, V.Luna":
+                bundle.putString("title", "hiPrecisionDiagnosticsVLuna");
+                break;
+            case "Hi-Precision Diagnostics, Pasig":
+                bundle.putString("title", "hiPrecisionDiagnosticsPasig");
+                break;
+            case "HPD International, Taft":
+                bundle.putString("title", "hPDInternationalTaft");
+                break;
+            case "Hi-Precision Diagnostics, Kalaw":
+                bundle.putString("title", "hiPrecisionDiagnosticsKalaw");
+                break;
+            case "Hi-Precision Diagnostics, Las Piñas":
+                bundle.putString("title", "hiPrecisionDiagnosticsLasPinas");
+                break;
+            case "Megaclinic-ALS":
+                bundle.putString("title", "megaclinicALS");
+                break;
+            case "Woodwater Center for Healing (Camillians)":
+                bundle.putString("title", "woodwaterCenterforHealing");
+                break;
+            case "Pasig Social Hygiene Clinic":
+                bundle.putString("title", "pasigSocialHygieneClinic");
+                break;
+            case "Jose Reyes Memorial Medical Center":
+                bundle.putString("title", "joseReyesMemorialMedicalCenter");
+                break;
+            case "Muntinlupa Health Center":
+                bundle.putString("title", "muntinlupaHealthCenter");
+                break;
+            case "Batasan Social Hygiene Clinic":
+                bundle.putString("title", "batasanSocialHygieneClinic");
+                break;
+            case "Bernardo Social Hygiene Clinic":
+                bundle.putString("title", "quezonCityBernardoSocialHygieneClinic");
+                break;
+            case "The Ship Foundation":
+                bundle.putString("title", "theShipFoundation");
+                break;
+            case "Hi-Precision Diangnostics, Sucat":
+                bundle.putString("title", "hiPrecisionDiangnosticsSucat");
+                break;
+            case "Hi-Precision Diagnostics Alabang":
+                bundle.putString("title", "hiPrecisionDiangnosticsAlabang");
+                break;
+            case "Hi-Precision Diagnostics, East Avenue":
+                bundle.putString("title", "hiPrecisionDiangnosticsEastAvenue");
+                break;
+        }
+
+        branchDialog.setArguments(bundle);
+        branchDialog.show(getFragmentManager(), "Branches Dialog");
+    }
 }
 
 
