@@ -350,7 +350,7 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     try {
                         model = dataSnapshot.getValue(UserInfo.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                            Toast.makeText(getContext(), model.getFirstName(), Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), model.getFirstName(), Toast.LENGTH_LONG).show();
 
 //                            editFname.setText(model.getFirstName());
 //                            editLname.setText(model.getLastName());

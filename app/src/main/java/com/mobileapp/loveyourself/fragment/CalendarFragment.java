@@ -24,6 +24,7 @@ import com.mobileapp.loveyourself.Factors;
 import com.mobileapp.loveyourself.R;
 import com.mobileapp.loveyourself.Reservation;
 import com.mobileapp.loveyourself.dialog.FactorDialog;
+import com.mobileapp.loveyourself.dialog.FactorViewDialog;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -233,7 +234,11 @@ public class CalendarFragment extends Fragment {
                 //LOAD DETAILS
                 break;
             case R.id.card_factor:
-                //LOAD DETAILS
+                FactorViewDialog factorDialog = new FactorViewDialog();
+//                Bundle args = new Bundle();
+//                args.putString("year", String.valueOf(date.getYear()));
+//                factorDialog.setArguments(args);
+                factorDialog.show(getActivity().getFragmentManager(), "Factor View Dialog");
                 break;
         }
     }
