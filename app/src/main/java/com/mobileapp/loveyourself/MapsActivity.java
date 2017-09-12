@@ -160,6 +160,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    0);
+            onBackPressed();
             return;
         }
         mMap.setOnMarkerClickListener(this);
@@ -170,7 +174,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setCompassEnabled(true);
 
         addMarkerLuzon();
-        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(14.609054, 121.022257) , 10.7f) );
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(14.609054, 121.022257), 10.7f));
 //        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(14.6091, 121.0223),15));
 
     }
