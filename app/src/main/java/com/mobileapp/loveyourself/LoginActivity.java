@@ -1,10 +1,12 @@
 package com.mobileapp.loveyourself;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -14,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -71,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(i);
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Please Verify Account.", Toast.LENGTH_LONG).show();
+                        createDialog("Please Verify Account.");
                         verifyEmail();
                     }
 
@@ -142,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             progress.setVisibility(View.GONE);
-                            Toast.makeText(LoginActivity.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
+                            createDialog("Username or Password Incorrect");
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                         }
                     }
@@ -182,8 +183,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            createDialog("Login Failed");
                         }
                         progress.setVisibility(View.GONE);
                     }
@@ -224,13 +224,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 progress.setVisibility(View.VISIBLE);
                 signInEmailPassword(etEmail.getText().toString(), etPassword.getText().toString());
                 break;
-
             case R.id.btn_reset_password:
                 startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
                 break;
             case R.id.btn_signup:
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-
+                break;
+            case R.id.btn_resend:
+                verifyEmail();
                 break;
 
         }
@@ -255,6 +256,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void createDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
 

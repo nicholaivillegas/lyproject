@@ -31,6 +31,16 @@
                     android:layout_marginBottom="30dp"
                     android:src="@mipmap/ic_launcher" />
 
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="3dp"
+                    android:text="Gender"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,9 +101,10 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="3dp"
                     android:text="Gender"
                     android:textColor="@color/colorAccent"
@@ -126,6 +137,25 @@
 
                 </RadioGroup>
 
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="3dp"
+                    android:text="Birthdate"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+                <DatePicker
+                    android:id="@+id/datepicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorLightPrimary"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner" />
+
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,6 +184,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/contact_number"
                         android:inputType="phone"
+                        android:maxLength="11"
                         android:maxLines="1"
                         android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />

@@ -92,6 +92,17 @@
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_resend"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/button_transparent_selector"
+            android:text="@string/btn_link_to_resend"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <ProgressBar

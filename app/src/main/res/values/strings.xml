@@ -33,6 +33,7 @@
     <string name="btn_login_facebook">FACEBOOK</string>
     <string name="btn_anon">ENTER ANONYMOUSLY</string>
     <string name="btn_link_to_register">Not a member? Get registered in Love Yourself now!</string>
+    <string name="btn_link_to_resend">Resend Verification Email</string>
     <string name="btn_link_to_login">Already registered. Login Me!</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot your password?</string>

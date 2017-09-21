@@ -1,25 +1,33 @@
 package com.mobileapp.loveyourself;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     private static final String TAG = "SIGN UP";
@@ -30,6 +38,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
     private DatabaseReference mDatabase;
     private RadioButton radioMale, radioFemale;
     private RadioGroup radioGroupGender;
+    private DatePicker mDatepicker;
     private String gender;
 
     @Override
@@ -55,6 +64,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         radioFemale = (RadioButton) findViewById(R.id.radio_female);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+        mDatepicker = (DatePicker) findViewById(R.id.datepicker);
         radioGroupGender.setOnCheckedChangeListener(this);
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,29 +88,47 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
                 final String lastName = inputLastName.getText().toString().trim();
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                String number = inputContactNumber.getText().toString().trim();
 
                 if (TextUtils.isEmpty(firstName)) {
-                    Toast.makeText(getApplicationContext(), "Enter Name!", Toast.LENGTH_SHORT).show();
+                    createDialog("Enter First Name!");
                     return;
                 }
 
                 if (TextUtils.isEmpty(lastName)) {
-                    Toast.makeText(getApplicationContext(), "Enter Name!", Toast.LENGTH_SHORT).show();
+                    createDialog("Enter Last Name!");
                     return;
                 }
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    createDialog("Enter email address!");
+                    return;
+                }
+
+                if (!isValidAge()) {
+                    createDialog("You should be 18 years old and above");
+                    return;
+                }
+
+                if (!emailValidator(email)) {
+                    createDialog("Incorrect Email format");
+
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    createDialog("Enter password!");
+
+                    return;
+                }
+
+                if (number.length() != 11) {
+                    createDialog("Enter 11 digit number");
                     return;
                 }
 
                 if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    createDialog("Password too short, enter minimum 6 characters!");
                     return;
                 }
 
@@ -110,15 +138,14 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+//                                createDialog("Logged In!");
                                 progressBar.setVisibility(View.GONE);
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
+                                    createDialog("Login Failed!");
+
                                 } else {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(firstName + " " + lastName)
 //                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
@@ -154,7 +181,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
                 gender,
                 inputLocation.getText().toString(),
                 inputContactNumber.getText().toString(),
-                "",
+                makeDate(),
                 "active",
                 "");
         mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
@@ -173,5 +200,40 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         } else if (checkedId == R.id.radio_female) {
             gender = "Female";
         }
+    }
+
+    public boolean emailValidator(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidAge() {
+        Date currentDate = new Date();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(currentDate);
+
+        int age = calendar.get(Calendar.YEAR) - mDatepicker.getYear();
+        return age > 17;
+    }
+
+    public String makeDate() {
+        return String.valueOf(mDatepicker.getMonth()) + "-" + String.valueOf(mDatepicker.getDayOfMonth()) + "-" + String.valueOf(mDatepicker.getYear());
+    }
+
+    public void createDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
