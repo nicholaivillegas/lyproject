@@ -49,8 +49,6 @@ public class FactorDialog extends DialogFragment {
     CheckBox checkIntravenous;
     @BindView(R.id.check_received)
     CheckBox checkReceived;
-    @BindView(R.id.check_insertive)
-    CheckBox checkInsertive;
     @BindView(R.id.check_oral)
     CheckBox checkOral;
     @BindView(R.id.button_submit)
@@ -112,24 +110,7 @@ public class FactorDialog extends DialogFragment {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         checkExposure();
-
                         saveProfile();
-
-                        Calendar beginTime = Calendar.getInstance();
-                        beginTime.set(year, month, day, 0, 0);
-                        Calendar endTime = Calendar.getInstance();
-                        endTime.set(year, month, day + daysExposure, 12, 30);
-                        Intent intent = new Intent(Intent.ACTION_INSERT)
-                                .setData(CalendarContract.Events.CONTENT_URI)
-                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
-                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-                                .putExtra(CalendarContract.Events.TITLE, "Love Yourself Appointment")
-                                .putExtra(CalendarContract.Events.DESCRIPTION, description)
-                                .putExtra(CalendarContract.Events.EVENT_LOCATION, "Love Yourself")
-                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
-                                .putExtra(Intent.EXTRA_EMAIL, "francistancapstone@gmail.com");
-                        startActivity(intent);
-
                         dismiss();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -141,21 +122,10 @@ public class FactorDialog extends DialogFragment {
         checkExposure();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Do you want to have another testing within " + String.valueOf(daysExposure) + " days?").setPositiveButton("Yes", dialogClickListener)
+        builder.setMessage("Do you want to record this activity?").setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
 
-    //    String id,
-//    String dateRecorded,
-//    String description,
-//    String checkReceptive,
-//    String checkAccidental,
-//    String checkShared,
-//    String checkIntravenous,
-//    String checkReceived,
-//    String checkInsertive,
-//    String checkOral,
-//    String other
     private void saveProfile() {
         Long tsLong = System.currentTimeMillis() / 1000;
         String timestamp = tsLong.toString();
@@ -169,11 +139,10 @@ public class FactorDialog extends DialogFragment {
                 String.valueOf(checkShared.isChecked()),
                 String.valueOf(checkIntravenous.isChecked()),
                 String.valueOf(checkReceived.isChecked()),
-                String.valueOf(checkInsertive.isChecked()),
                 String.valueOf(checkOral.isChecked()),
                 "");
         mDatabase.child("factors").child(String.valueOf(timestamp)).setValue(factors);
-        Toast.makeText(getActivity(), "Saved", Toast.LENGTH_LONG).show();
+        createDialog("We highly recommend that you get tested within 10 days");
     }
 
     public void checkExposure() {
@@ -198,13 +167,22 @@ public class FactorDialog extends DialogFragment {
             daysExposure = 10;
             description = description + "Received Blood Transfusion\n";
         }
-        if (checkInsertive.isChecked()) {
-            daysExposure = 60;
-            description = description + "Insertive Anal/ Vaginal Sex with Protection\n";
-        }
         if (checkOral.isChecked()) {
             daysExposure = 60;
             description = description + "Receptive / Insertive Oral Sex";
         }
+    }
+
+    public void createDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

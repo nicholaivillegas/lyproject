@@ -1,9 +1,15 @@
 package com.mobileapp.loveyourself.fragment;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -11,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +46,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CalendarFragment extends Fragment {
 
-    MaterialCalendarView calendarView;
+
     @BindView(R.id.circleImageView)
     CircleImageView circleImageView;
     @BindView(R.id.text_reservation)
@@ -57,6 +64,12 @@ public class CalendarFragment extends Fragment {
     @BindView(R.id.card_factor)
     CardView cardFactor;
     Unbinder unbinder;
+    @BindView(R.id.calendarView)
+    MaterialCalendarView calendarView;
+    @BindView(R.id.button_call)
+    Button buttonCall;
+    @BindView(R.id.button_directions)
+    Button buttonDirections;
     private Date dateSelected;
     private DatabaseReference mDatabase;
     private DatabaseReference myRef;
@@ -71,6 +84,7 @@ public class CalendarFragment extends Fragment {
     private int selectedYear;
     private int selectedMonth;
     private int selectedDay;
+    FactorViewDialog factorViewDialog;
 
     @Nullable
     @Override
@@ -79,41 +93,48 @@ public class CalendarFragment extends Fragment {
         calendarView = (MaterialCalendarView) view.findViewById(R.id.calendarView);
         loadFields();
         loadFactors();
-
         calendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_MULTIPLE);
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull final CalendarDay date, boolean selected) {
-                if ((date.getYear() == selectedYear) && (date.getMonth() == selectedMonth) && (date.getDay() == selectedDay)) {
+                if (!selected) {
                     calendarView.setSelectedDate(date);
+                    factorViewDialog = new FactorViewDialog();
+                    Bundle args = new Bundle();
+                    args.putString("year", String.valueOf(date.getYear()));
+                    args.putString("month", String.valueOf(date.getMonth()));
+                    args.putString("day", String.valueOf(date.getDay()));
+                    factorViewDialog.setArguments(args);
+                    factorViewDialog.show(getActivity().getFragmentManager(), "Factor View Dialog");
                 } else {
                     calendarView.setDateSelected(date, false);
-                }
-                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                FactorDialog factorDialog = new FactorDialog();
-                                Bundle args = new Bundle();
-                                args.putString("year", String.valueOf(date.getYear()));
-                                args.putString("month", String.valueOf(date.getMonth()));
-                                args.putString("day", String.valueOf(date.getDay()));
-                                factorDialog.setArguments(args);
-                                factorDialog.show(getActivity().getFragmentManager(), "Factor Dialog");
-                                break;
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    FactorDialog factorDialog = new FactorDialog();
+                                    Bundle args = new Bundle();
+                                    args.putString("year", String.valueOf(date.getYear()));
+                                    args.putString("month", String.valueOf(date.getMonth()));
+                                    args.putString("day", String.valueOf(date.getDay()));
+                                    factorDialog.setArguments(args);
+                                    factorDialog.show(getActivity().getFragmentManager(), "Factor Dialog");
+                                    dialog.dismiss();
+                                    break;
 
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                //No button clicked
-                                break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    break;
+                            }
                         }
-                    }
-                };
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("Do you want to add an activity?").setPositiveButton("Yes", dialogClickListener)
-                        .setNegativeButton("No", dialogClickListener).show();
-
+                    };
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("Do you want to add an activity?").setPositiveButton("Yes", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
+                }
+                loadFields();
+                loadFactors();
             }
         });
         unbinder = ButterKnife.bind(this, view);
@@ -142,8 +163,8 @@ public class CalendarFragment extends Fragment {
                             selectedYear = year;
                             selectedMonth = month;
                             selectedDay = day;
-                            Date date = new Date(year - 1900, month, day);
-                            calendarView.setDateSelected(date, true);
+//                            Date date = new Date(year - 1900, month, day);
+//                            calendarView.setDateSelected(date, true);
 
                         }
                     } catch (Exception ex) {
@@ -183,9 +204,9 @@ public class CalendarFragment extends Fragment {
                         modelFactors = dataSnapshot.getValue(Factors.class);
                         Date date = new Date();
                         if (modelFactors.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                            cardFactor.setVisibility(View.VISIBLE);
-                            textFactor.setText("Activity");
-                            textFactor1.setText("Click here for more...");
+//                            cardFactor.setVisibility(View.VISIBLE);
+//                            textFactor.setText("Activity");
+//                            textFactor1.setText("Click here for more...");
                             final int year = Integer.parseInt(modelFactors.getDateRecordedYear());
                             final int month = Integer.parseInt(modelFactors.getDateRecordedMonth());
                             final int day = Integer.parseInt(modelFactors.getDateRecordedDate());
@@ -227,7 +248,7 @@ public class CalendarFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.card_reservation, R.id.card_factor})
+    @OnClick({R.id.card_reservation, R.id.card_factor, R.id.button_call, R.id.button_directions})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.card_reservation:
@@ -240,6 +261,49 @@ public class CalendarFragment extends Fragment {
 //                factorDialog.setArguments(args);
                 factorDialog.show(getActivity().getFragmentManager(), "Factor View Dialog");
                 break;
+            case R.id.button_call:
+                if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.CALL_PHONE},
+                            0);
+                }
+                if (textReservation.getText().toString().contains("Anglo")) {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "09153665683"));
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022569384"));
+                    startActivity(intent);
+                }
+                break;
+            case R.id.button_directions:
+                if (textReservation.getText().toString().contains("Anglo")) {
+                    try {
+                        // Launch Waze to look for Hawaii:
+                        String url = "https://waze.com/ul?q=Anglo love yourself";
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        // If Waze is not installed, open it in Google Play:
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.waze"));
+                        startActivity(intent);
+                    }
+                } else {
+                    try {
+                        // Launch Waze to look for Hawaii:
+                        String url = "https://waze.com/ul?q=Uni love yourself";
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        // If Waze is not installed, open it in Google Play:
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.waze"));
+                        startActivity(intent);
+                    }
+                }
+                break;
         }
     }
+
+
+
+
 }

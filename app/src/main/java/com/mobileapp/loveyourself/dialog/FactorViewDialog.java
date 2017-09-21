@@ -46,8 +46,6 @@ public class FactorViewDialog extends DialogFragment {
     CheckBox checkIntravenous;
     @BindView(R.id.check_received)
     CheckBox checkReceived;
-    @BindView(R.id.check_insertive)
-    CheckBox checkInsertive;
     @BindView(R.id.check_oral)
     CheckBox checkOral;
     @BindView(R.id.button_submit)
@@ -58,6 +56,10 @@ public class FactorViewDialog extends DialogFragment {
 
     private String id;
     Factors model;
+
+    private int year;
+    private int month;
+    private int day;
 
     FirebaseDatabase database;
     private DatabaseReference myRef1;
@@ -76,19 +78,22 @@ public class FactorViewDialog extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setDialogWindow();
-
+        year = Integer.parseInt(getArguments().getString("year"));
+        month = Integer.parseInt(getArguments().getString("month"));
+        day = Integer.parseInt(getArguments().getString("day"));
         checkReceptive.setClickable(false);
         checkAccidental.setClickable(false);
         checkShared.setClickable(false);
         checkIntravenous.setClickable(false);
         checkReceived.setClickable(false);
-        checkInsertive.setClickable(false);
         checkOral.setClickable(false);
         buttonSubmit.setVisibility(View.GONE);
         id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         myRef1 = database.getReference("factors");
         mDatabase1 = FirebaseDatabase.getInstance().getReference();
+        textLabel.setText("List of Recorded Activities");
+
         ref1 = myRef1.addChildEventListener(new ChildEventListener() {
 
             @Override
@@ -97,27 +102,25 @@ public class FactorViewDialog extends DialogFragment {
                     try {
                         model = dataSnapshot.getValue(Factors.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                            textLabel.setText("List of Recorded Activities");
-                            if (model.getCheckReceptive().equals("true")) {
-                                checkReceptive.setChecked(true);
-                            }
-                            if (model.getCheckAccidental().equals("true")) {
-                                checkAccidental.setChecked(true);
-                            }
-                            if (model.getCheckShared().equals("true")) {
-                                checkShared.setChecked(true);
-                            }
-                            if (model.getCheckIntravenous().equals("true")) {
-                                checkIntravenous.setChecked(true);
-                            }
-                            if (model.getCheckReceived().equals("true")) {
-                                checkReceived.setChecked(true);
-                            }
-                            if (model.getCheckInsertive().equals("true")) {
-                                checkInsertive.setChecked(true);
-                            }
-                            if (model.getCheckOral().equals("true")) {
-                                checkOral.setChecked(true);
+                            if (model.getDateRecordedMonth().equals(String.valueOf(month)) && model.getDateRecordedDate().equals(String.valueOf(day)) && model.getDateRecordedYear().equals(String.valueOf(year))) {
+                                if (model.getCheckReceptive().equals("true")) {
+                                    checkReceptive.setChecked(true);
+                                }
+                                if (model.getCheckAccidental().equals("true")) {
+                                    checkAccidental.setChecked(true);
+                                }
+                                if (model.getCheckShared().equals("true")) {
+                                    checkShared.setChecked(true);
+                                }
+                                if (model.getCheckIntravenous().equals("true")) {
+                                    checkIntravenous.setChecked(true);
+                                }
+                                if (model.getCheckReceived().equals("true")) {
+                                    checkReceived.setChecked(true);
+                                }
+                                if (model.getCheckOral().equals("true")) {
+                                    checkOral.setChecked(true);
+                                }
                             }
                         }
                     } catch (Exception ex) {

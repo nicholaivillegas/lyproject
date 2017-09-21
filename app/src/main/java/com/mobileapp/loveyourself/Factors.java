@@ -15,7 +15,6 @@ public class Factors {
     private String checkShared;
     private String checkIntravenous;
     private String checkReceived;
-    private String checkInsertive;
     private String checkOral;
     private String other;
 
@@ -23,7 +22,7 @@ public class Factors {
 
     }
 
-    public Factors(String id, String dateRecordedYear, String dateRecordedMonth, String dateRecordedDate, String description, String checkReceptive, String checkAccidental, String checkShared, String checkIntravenous, String checkReceived, String checkInsertive, String checkOral, String other) {
+    public Factors(String id, String dateRecordedYear, String dateRecordedMonth, String dateRecordedDate, String description, String checkReceptive, String checkAccidental, String checkShared, String checkIntravenous, String checkReceived, String checkOral, String other) {
         this.id = id;
         this.dateRecordedYear = dateRecordedYear;
         this.dateRecordedMonth = dateRecordedMonth;
@@ -34,7 +33,6 @@ public class Factors {
         this.checkShared = checkShared;
         this.checkIntravenous = checkIntravenous;
         this.checkReceived = checkReceived;
-        this.checkInsertive = checkInsertive;
         this.checkOral = checkOral;
         this.other = other;
     }
@@ -117,14 +115,6 @@ public class Factors {
 
     public void setCheckReceived(String checkReceived) {
         this.checkReceived = checkReceived;
-    }
-
-    public String getCheckInsertive() {
-        return checkInsertive;
-    }
-
-    public void setCheckInsertive(String checkInsertive) {
-        this.checkInsertive = checkInsertive;
     }
 
     public String getCheckOral() {
