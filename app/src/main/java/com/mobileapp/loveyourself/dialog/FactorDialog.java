@@ -126,6 +126,7 @@ public class FactorDialog extends DialogFragment {
                 .setNegativeButton("No", dialogClickListener).show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void saveProfile() {
         Long tsLong = System.currentTimeMillis() / 1000;
         String timestamp = tsLong.toString();
@@ -173,6 +174,7 @@ public class FactorDialog extends DialogFragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void createDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(message)
