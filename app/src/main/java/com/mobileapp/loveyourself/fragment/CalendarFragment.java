@@ -266,14 +266,16 @@ public class CalendarFragment extends Fragment {
                     ActivityCompat.requestPermissions(getActivity(),
                             new String[]{Manifest.permission.CALL_PHONE},
                             0);
-                }
-                if (textReservation.getText().toString().contains("Anglo")) {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "09153665683"));
-                    startActivity(intent);
                 } else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022569384"));
-                    startActivity(intent);
+                    if (textReservation.getText().toString().contains("Anglo")) {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "09153665683"));
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022569384"));
+                        startActivity(intent);
+                    }
                 }
+
                 break;
             case R.id.button_directions:
                 if (textReservation.getText().toString().contains("Anglo")) {
@@ -302,8 +304,6 @@ public class CalendarFragment extends Fragment {
                 break;
         }
     }
-
-
 
 
 }
