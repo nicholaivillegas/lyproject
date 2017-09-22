@@ -1,8 +1,11 @@
 package com.mobileapp.loveyourself;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,6 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.orangegangsters.lollipin.lib.managers.AppLock;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mobileapp.loveyourself.fragment.AboutFragment;
@@ -30,6 +35,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textName, textEmail;
+    private static final int REQUEST_CODE_ENABLE = 11;
+    Handler handler;
+    Runnable r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +70,36 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         switchFragment(new NewsFragment());
+        checkFirstRun();
+        handler = new Handler();
+        r = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+                intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
+                startActivity(intent);
+            }
+        };
+        startHandler();
+    }
+
+    @Override
+    public void onUserInteraction() {
+        // TODO Auto-generated method stub
+        super.onUserInteraction();
+        stopHandler();//stop first and then start
+        startHandler();
+    }
+
+    public void stopHandler() {
+        handler.removeCallbacks(r);
+    }
+
+    public void startHandler() {
+        handler.postDelayed(r, 5 * 60 * 1000);
+//        handler.postDelayed(r, 1 * 20 * 1000);
     }
 
     @Override
@@ -91,6 +129,10 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_exit) {
             finish();
+        } else if (id == R.id.action_change_pin) {
+            Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.CHANGE_PIN);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -106,7 +148,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_reservation) {
             switchFragment(new ReservationFragment());
         } else if (id == R.id.nav_calendar) {
+            Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
+            startActivity(intent);
             switchFragment(new CalendarFragment());
+//            startActivity(new Intent(MainActivity.this, LockMainActivity.class));
         } else if (id == R.id.nav_about) {
             switchFragment(new AboutFragment());
         } else if (id == R.id.nav_locator) {
@@ -127,5 +173,66 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.content_main, fragment);
         transaction.commit();
+    }
+
+    private void checkFirstRun() {
+
+        final String PREFS_NAME = "MyPrefsFile";
+        final String PREF_VERSION_CODE_KEY = "version_code";
+        final int DOESNT_EXIST = -1;
+
+        // Get current version code
+        int currentVersionCode = BuildConfig.VERSION_CODE;
+
+        // Get saved version code
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int savedVersionCode = prefs.getInt(PREF_VERSION_CODE_KEY, DOESNT_EXIST);
+        Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+        // Check for first run or upgrade
+        if (currentVersionCode == savedVersionCode) {
+
+            // This is just a normal run
+            return;
+
+        } else if (savedVersionCode == DOESNT_EXIST) {
+
+            // TODO This is a new install (or the user cleared the shared preferences)
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
+            startActivityForResult(intent, REQUEST_CODE_ENABLE);
+
+
+        } else if (currentVersionCode > savedVersionCode) {
+
+            // TODO This is an upgrade
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
+            startActivityForResult(intent, REQUEST_CODE_ENABLE);
+        }
+
+        // Update the shared preferences with the current version code
+        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQUEST_CODE_ENABLE:
+                createDialog("Pin Enabled");
+                break;
+        }
+    }
+
+    public void createDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

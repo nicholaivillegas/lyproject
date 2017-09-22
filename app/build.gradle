@@ -37,6 +37,11 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
     compile 'com.jakewharton:butterknife:8.8.0'
+
+    compile('com.github.orangegangsters:lollipin:2.0.0@aar') {
+        transitive = true
+    }
+    compile 'uk.me.lewisdeane.ldialogs:ldialogs:1.2.0@aar'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
     testCompile 'junit:junit:4.12'
 }
