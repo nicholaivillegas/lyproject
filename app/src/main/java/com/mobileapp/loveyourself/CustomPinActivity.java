@@ -1,15 +1,20 @@
 package com.mobileapp.loveyourself;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import com.github.orangegangsters.lollipin.lib.managers.AppLock;
 import com.github.orangegangsters.lollipin.lib.managers.AppLockActivity;
+import com.mobileapp.loveyourself.dialog.BranchDialog;
+import com.mobileapp.loveyourself.dialog.ForgetPasswordDialog;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 import uk.me.lewisdeane.ldialogs.CustomDialog;
@@ -52,7 +57,10 @@ public class CustomPinActivity extends AppLockActivity {
         customDialog.setClickListener(new CustomDialog.ClickListener() {
             @Override
             public void onConfirmClick() {
-                createDialog("Please Contact a Love Yourself Admin to retrieve your PIN");
+//                createDialog("Please Contact a Love Yourself Admin to retrieve your PIN");
+                ForgetPasswordDialog branchDialog = new ForgetPasswordDialog();
+                branchDialog.show(getFragmentManager(), "Forget Password Dialog");
+
             }
 
             @Override

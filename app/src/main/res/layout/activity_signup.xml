@@ -31,16 +31,6 @@
                     android:layout_marginBottom="30dp"
                     android:src="@mipmap/ic_launcher" />
 
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="3dp"
-                    android:text="Gender"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -225,6 +215,46 @@
                         android:imeActionId="@+id/login"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/colorLightPrimary" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/edit_security_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:hint="Security Question"
+                        android:imeActionId="@+id/edit_security_question"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textCapSentences"
+                        android:maxLines="1"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/colorLightPrimary" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/edit_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:hint="Answer"
+                        android:imeActionId="@+id/edit_answer"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textCapSentences"
                         android:maxLines="1"
                         android:textColor="@android:color/white"
                         android:textColorHint="@color/colorLightPrimary" />

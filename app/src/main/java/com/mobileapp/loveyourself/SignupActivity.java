@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     private static final String TAG = "SIGN UP";
-    private EditText inputFirstName, inputLastName, inputEmail, inputLocation, inputContactNumber, inputPassword, inputRetypePassword;
+    private EditText inputFirstName, inputLastName, inputEmail, inputLocation, inputContactNumber, inputPassword, inputRetypePassword, inputQuestion, inputAnswer;
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -59,6 +59,8 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         inputContactNumber = (EditText) findViewById(R.id.edit_contact_number);
         inputPassword = (EditText) findViewById(R.id.edit_password);
         inputRetypePassword = (EditText) findViewById(R.id.edit_retype_password);
+        inputQuestion = (EditText) findViewById(R.id.edit_security_question);
+        inputAnswer = (EditText) findViewById(R.id.edit_answer);
         radioGroupGender = (RadioGroup) findViewById(R.id.radiogroup_gender);
         radioMale = (RadioButton) findViewById(R.id.radio_male);
         radioFemale = (RadioButton) findViewById(R.id.radio_female);
@@ -183,7 +185,9 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
                 inputContactNumber.getText().toString(),
                 makeDate(),
                 "active",
-                "");
+                "",
+                inputQuestion.getText().toString(),
+                inputAnswer.getText().toString());
         mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
     }
 

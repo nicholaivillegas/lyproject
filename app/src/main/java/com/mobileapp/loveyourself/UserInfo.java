@@ -12,12 +12,14 @@ public class UserInfo {
     public String birthdate;
     public String type;
     public String others;
+    public String question;
+    public String answer;
 
     public UserInfo() {
 
     }
 
-    public UserInfo(String id, String firstName, String lastName, String email, String gender, String location, String number, String birthdate, String type, String others) {
+    public UserInfo(String id, String firstName, String lastName, String email, String gender, String location, String number, String birthdate, String type, String others, String question, String answer) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,6 +30,8 @@ public class UserInfo {
         this.birthdate = birthdate;
         this.type = type;
         this.others = others;
+        this.question = question;
+        this.answer = answer;
     }
 
     public String getId() {
@@ -108,5 +112,21 @@ public class UserInfo {
 
     public void setOthers(String others) {
         this.others = others;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
