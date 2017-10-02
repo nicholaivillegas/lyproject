@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -40,6 +42,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
     private RadioGroup radioGroupGender;
     private DatePicker mDatepicker;
     private String gender;
+    private CheckBox checkDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,19 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         mDatepicker = (DatePicker) findViewById(R.id.datepicker);
+        checkDate = (CheckBox) findViewById(R.id.check_date);
+        checkDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mDatepicker.setEnabled(true);
+                    mDatepicker.setVisibility(View.VISIBLE);
+                } else {
+                    mDatepicker.setEnabled(false);
+                    mDatepicker.setVisibility(View.GONE);
+                }
+            }
+        });
         radioGroupGender.setOnCheckedChangeListener(this);
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +147,11 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
 
                 if (password.length() < 6) {
                     createDialog("Password too short, enter minimum 6 characters!");
+                    return;
+                }
+
+                if (!checkDate.isChecked()) {
+                    createDialog("Please Confirm your Age.");
                     return;
                 }
 

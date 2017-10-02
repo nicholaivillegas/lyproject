@@ -138,8 +138,16 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
+                <CheckBox
+                    android:id="@+id/check_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="I confirm that I am 18 years old and above."
+                    android:textColor="@color/colorLight" />
+
                 <DatePicker
                     android:id="@+id/datepicker"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLightPrimary"

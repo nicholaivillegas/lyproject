@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
@@ -98,5 +99,17 @@ public class CustomPinActivity extends AppLockActivity {
     @Override
     public int getPinLength() {
         return super.getPinLength();//you can override this method to change the pin length from the default 4
+    }
+
+    @Override
+    public void onBackPressed() {
+        mLockManager.getAppLock().setPinChallengeCancelled(true);
+        LocalBroadcastManager
+                .getInstance(this)
+                .sendBroadcast(new Intent().setAction(ACTION_CANCEL));
+        Intent intent = new Intent(CustomPinActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }
