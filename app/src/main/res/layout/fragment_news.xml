@@ -9,6 +9,196 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HIV cases continue to rise, according to latest HARP data"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Monday, September 25, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Jay-Ar Keita The Philippines’ battle with HIV continues, as the number of newly diagnosed people living with HIV (PLHIV) remains high. According to the HIV/AIDS and ART Registry of the Philippines (HARP), an average of 30 new cases per day were reported in June 2017, only five cases less compared to May 2017's daily average.This time last year, there were 841 new cases reported. The latest data shows a 20% increase to this month’s census..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS: Working with HIV"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Thursday, September 14, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Jeffrey Venzuela The latest data (June) released by DOH, shows that more than half of the reported cases of HIV belong to the age range of 25-34 years old, which means that most cases are young professionals. With the ongoing advancement of treatment and maintenance for HIV and AIDS, it should be known that life doesn’t end upon diagnosis. Living, however, can still be an uphill battle. While some people look to their jobs to make ends meet,..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Asia’s Premier Charity and Awards Gala on HIV Advocacy Unveiled"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Sunday, August 13, 2017" />
+
+                <ImageView
+                    android:id="@+id/image_news19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Long before Miss Universe 2015 Pia Alonzo Wurtzbach exponentially raised HIV and AIDS awareness in the country, many Filipino individuals have been working hard to change the landscape of the HIV and AIDS advocacy in the country. "
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Miss Universe 2015 as Ambassador of Asia’s Premier Charity and Awards Gala"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Sunday, August 13, 2017 " />
+
+                <ImageView
+                    android:id="@+id/image_news18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Miss Universe 2015 and UNAIDS Goodwill Ambassador for Asia and the Pacific, Pia Alonzo Wurtzbach, made the heart sign with her hands after being named on Wednesday (9 August) as the first-ever ambassador of “Love Gala.” In giving her time wholeheartedly to the HIV advocacy, Wurtzbach announced her personal project called Project Progressive Information Awareness (PIA) campaign, or simply dubbed Project PIA, which bears the Love Gala. Love..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

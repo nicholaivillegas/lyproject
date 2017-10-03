@@ -16,8 +16,8 @@ import com.squareup.picasso.Picasso;
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9, buttonImage10, buttonImage11, buttonImage12, buttonImage13, buttonImage14, buttonImage15, buttonImage16, buttonImage17;
-    private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17;
+    private Button buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9, buttonImage10, buttonImage11, buttonImage12, buttonImage13, buttonImage14, buttonImage15, buttonImage16, buttonImage17, buttonImage18, buttonImage19, buttonImage20, buttonImage21;
+    private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20, image21;
     String url;
 
     @Nullable
@@ -41,6 +41,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         buttonImage15 = (Button) view.findViewById(R.id.button15);
         buttonImage16 = (Button) view.findViewById(R.id.button16);
         buttonImage17 = (Button) view.findViewById(R.id.button17);
+        buttonImage18 = (Button) view.findViewById(R.id.button18);
+        buttonImage19 = (Button) view.findViewById(R.id.button19);
+        buttonImage20 = (Button) view.findViewById(R.id.button20);
+        buttonImage21 = (Button) view.findViewById(R.id.button21);
 
         image1 = (ImageView) view.findViewById(R.id.image_news1);
         image2 = (ImageView) view.findViewById(R.id.image_news2);
@@ -59,6 +63,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         image15 = (ImageView) view.findViewById(R.id.image_news15);
         image16 = (ImageView) view.findViewById(R.id.image_news16);
         image17 = (ImageView) view.findViewById(R.id.image_news17);
+        image18 = (ImageView) view.findViewById(R.id.image_news18);
+        image19 = (ImageView) view.findViewById(R.id.image_news19);
+        image20 = (ImageView) view.findViewById(R.id.image_news20);
+        image21 = (ImageView) view.findViewById(R.id.image_news21);
 
         buttonImage1.setOnClickListener(this);
         buttonImage2.setOnClickListener(this);
@@ -77,6 +85,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         buttonImage15.setOnClickListener(this);
         buttonImage16.setOnClickListener(this);
         buttonImage17.setOnClickListener(this);
+        buttonImage18.setOnClickListener(this);
+        buttonImage19.setOnClickListener(this);
+        buttonImage20.setOnClickListener(this);
+        buttonImage21.setOnClickListener(this);
 
         initImage();
         return view;
@@ -137,6 +149,18 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             case R.id.button17:
                 url = "http://www.loveyourself.ph/2017/07/status-a-to-e-of-being-positive-to.html";
                 break;
+            case R.id.button18:
+                url = "http://www.loveyourself.ph/2017/08/miss-universe-2015-as-ambassador-of.html";
+                break;
+            case R.id.button19:
+                url = "http://www.loveyourself.ph/2017/08/asias-premier-charity-and-awards-gala.html";
+                break;
+            case R.id.button20:
+                url = "http://www.loveyourself.ph/2017/09/status-working-with-hiv.html";
+                break;
+            case R.id.button21:
+                url = "http://www.loveyourself.ph/2017/09/hiv-cases-continue-to-rise-according-to.html";
+                break;
         }
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
@@ -161,6 +185,11 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         Picasso.with(this.getContext()).load("https://lh4.googleusercontent.com/Ej5brBMINQkjevF35vu3SDAq0c86s1q0RZmZQluRaQEkzdRZQpLjAbBuNaL1Q0-cT4g-jy3dusqQfCNqECRqMHv8JJ49YnHQE2RzsC_zxWicpaMP0ULpGUkP_9IZl6D-nv5JLAto").into(image15);
         Picasso.with(this.getContext()).load("https://1.bp.blogspot.com/-8ltGARlsu_o/WUpicvrMlDI/AAAAAAAAADE/Jz5xny4XIRQzuE2xj6iGX7Zs96AO6WgagCLcBGAs/s640/Infographic%2BPart%2B1%2Bv.3.png").into(image16);
         Picasso.with(this.getContext()).load("https://lh4.googleusercontent.com/oYXZLhRdoY-yeTRt0aCRN_0ZAkSnRM9SHK0qmMKTV_MmcECJLo4K9_83f3mnOkWM6DI5evLFFEMptYOXdV8ZQmpYHnyj1qO4OURXIVts_iN_Y74BW58cSxwnv6vh2jN5pppRVLOq").into(image17);
+
+        Picasso.with(this.getContext()).load("https://3.bp.blogspot.com/-pJ_zkS5rsQk/WchZ9cN_0YI/AAAAAAAAYgk/hDov_IYlSlEi-l-2yvWKCAEMaAjKBymXQCLcBGAs/s640/blood%2Bextraction.jpg").into(image21);
+        Picasso.with(this.getContext()).load("https://3.bp.blogspot.com/--a4JIPaPALo/WbkVkHogdiI/AAAAAAAAADw/zoD6HQ7vKMwxrArVktXMF_JwWs-jZL8OQCLcBGAs/s640/pic2.jpg").into(image20);
+        Picasso.with(this.getContext()).load("https://4.bp.blogspot.com/-GDKf7T1iiN4/WY_uh6bXNfI/AAAAAAAAYcQ/fJ0TccD4XPskrelpjHlSzgHUT76kXILiACLcBGAs/s640/image.png").into(image19);
+        Picasso.with(this.getContext()).load("https://3.bp.blogspot.com/-fkvaIZRl3B4/WY_lMCEnvEI/AAAAAAAAYcE/n4l7KTuwWjkv9z5EvdueRsjHtisCAFhTgCEwYBhgL/s640/Pia%2BLove%2BGala%2BAmbassador.jpg").into(image18);
 
     }
 }
