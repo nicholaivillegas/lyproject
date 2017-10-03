@@ -54,6 +54,8 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     private DatabaseReference myRef;
     private ChildEventListener ref;
 
+    private String firstName, lastName, location, number, email;
+
     UserInfo model;
 
     @Nullable
@@ -114,20 +116,22 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     private void getFieldsInformation() {
         Long tsLong = System.currentTimeMillis() / 1000;
         timestamp = tsLong.toString();
-        testingDate = String.valueOf(datepicker.getYear()) + "," + String.valueOf(datepicker.getMonth()) + "," + String.valueOf(datepicker.getDayOfMonth());
+        testingDate = String.valueOf(datepicker.getYear()) + "," + String.valueOf(datepicker.getMonth() + 1) + "," + String.valueOf(datepicker.getDayOfMonth());
     }
 
     private void saveProfile() {
+
+
         Reservation reservation = new Reservation(
                 FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 timestamp,
-                model.getFirstName(),
-                model.getLastName(),
-                model.getLocation(),
-                model.getNumber(),
-                model.getEmail(),
+                firstName,
+                lastName,
+                location,
+                number,
+                email,
                 testingLocation,
-                String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth()), String.valueOf(datepicker.getDayOfMonth()),
+                String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth() + 1), String.valueOf(datepicker.getDayOfMonth()),
                 other,
                 extra);
         mDatabase.child("reservations").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(reservation);
@@ -164,7 +168,11 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                         model = dataSnapshot.getValue(UserInfo.class);
                         if (model.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
 //                            Toast.makeText(getContext(), model.getFirstName(), Toast.LENGTH_LONG).show();
-
+                            firstName = model.getFirstName();
+                            lastName = model.getLastName();
+                            location = model.getLocation();
+                            number = model.getNumber();
+                            email = model.getEmail();
 //                            editFname.setText(model.getFirstName());
 //                            editLname.setText(model.getLastName());
 //                            editCityResidence.setText(model.getLocation());
