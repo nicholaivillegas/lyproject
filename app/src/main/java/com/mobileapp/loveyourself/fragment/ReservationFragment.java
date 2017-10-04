@@ -72,6 +72,8 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         radioBranchAnglo.setOnClickListener(this);
         radioBranchUni.setOnClickListener(this);
 
+        datepicker.setMinDate(System.currentTimeMillis() - 1000);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         return view;
     }
