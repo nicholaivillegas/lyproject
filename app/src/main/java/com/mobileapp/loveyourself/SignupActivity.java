@@ -71,6 +71,12 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         mDatepicker = (DatePicker) findViewById(R.id.datepicker);
         checkDate = (CheckBox) findViewById(R.id.check_date);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -18);
+        long legalAge = calendar.getTime().getTime();
+
+        mDatepicker.setMinDate(legalAge);
         checkDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

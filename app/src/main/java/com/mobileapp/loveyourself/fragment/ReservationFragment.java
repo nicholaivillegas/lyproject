@@ -93,12 +93,17 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_submit:
+                if (buttonSubmit.getText().equals("BACK")) {
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
                 if (testingLocation != null && checkReminder.isChecked()) {
-                    buttonSubmit.setText("SENT");
+                    buttonSubmit.setText("BACK");
                     getFieldsInformation();
                     saveProfile();
                     createCalendar();
-                    buttonSubmit.setEnabled(false);
                     buttonSubmit.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                     buttonSubmit.setTextColor(getResources().getColor(R.color.colorAccent));
                 } else if (testingLocation == null) {
@@ -108,11 +113,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     createDialog("Please Read Reminders!");
                     return;
                 }
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-
                 break;
 
             case R.id.radio_branch_anglo:
@@ -132,8 +132,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     }
 
     private void saveProfile() {
-
-
         Reservation reservation = new Reservation(
                 FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 timestamp,
@@ -149,7 +147,6 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         mDatabase.child("reservations").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(reservation);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void createCalendar() {
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(datepicker.getYear(), datepicker.getMonth(), datepicker.getDayOfMonth(), 0, 0);
