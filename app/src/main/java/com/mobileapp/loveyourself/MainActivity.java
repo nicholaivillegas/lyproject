@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.orangegangsters.lollipin.lib.managers.AppLock;
+import com.github.orangegangsters.lollipin.lib.managers.LockManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mobileapp.loveyourself.fragment.AboutFragment;
@@ -81,36 +82,36 @@ public class MainActivity extends AppCompatActivity
 
         switchFragment(new NewsFragment());
         checkFirstRun();
-        handler = new Handler();
-        r = new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
-                intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
-                startActivity(intent);
-            }
-        };
-        startHandler();
+//        handler = new Handler();
+//        r = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                // TODO Auto-generated method stub
+//                Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+//                intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
+//                startActivity(intent);
+//            }
+//        };
+//        startHandler();
     }
 
     @Override
     public void onUserInteraction() {
         // TODO Auto-generated method stub
         super.onUserInteraction();
-        stopHandler();//stop first and then start
-        startHandler();
+//        stopHandler();//stop first and then start
+//        startHandler();
     }
 
-    public void stopHandler() {
-        handler.removeCallbacks(r);
-    }
-
-    public void startHandler() {
-        handler.postDelayed(r, 5 * 60 * 1000);
-//        handler.postDelayed(r, 1 * 20 * 1000);
-    }
+//    public void stopHandler() {
+//        handler.removeCallbacks(r);
+//    }
+//
+//    public void startHandler() {
+//        handler.postDelayed(r, 5 * 60 * 1000);
+////        handler.postDelayed(r, 1 * 20 * 1000);
+//    }
 
     @Override
     public void onBackPressed() {
@@ -120,6 +121,20 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
+//        intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
+//        startActivity(intent);
     }
 
     @Override

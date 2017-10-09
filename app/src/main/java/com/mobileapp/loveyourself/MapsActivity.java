@@ -82,6 +82,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         buttonCenter = (Button) findViewById(R.id.btn_center);
         spinner = (Spinner) findViewById(R.id.spinner);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

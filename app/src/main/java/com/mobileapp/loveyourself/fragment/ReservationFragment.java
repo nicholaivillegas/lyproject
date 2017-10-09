@@ -23,6 +23,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.github.orangegangsters.lollipin.lib.managers.LockManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mobileapp.loveyourself.CustomPinActivity;
+import com.mobileapp.loveyourself.LoginActivity;
+import com.mobileapp.loveyourself.MainActivity;
 import com.mobileapp.loveyourself.R;
 import com.mobileapp.loveyourself.Reservation;
 import com.mobileapp.loveyourself.UserInfo;
@@ -99,9 +103,15 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     buttonSubmit.setTextColor(getResources().getColor(R.color.colorAccent));
                 } else if (testingLocation == null) {
                     createDialog("Select Testing Location!");
+                    return;
                 } else {
                     createDialog("Please Read Reminders!");
+                    return;
                 }
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
                 break;
 

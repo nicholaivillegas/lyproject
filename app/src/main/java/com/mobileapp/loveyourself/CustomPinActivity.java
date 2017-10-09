@@ -108,8 +108,19 @@ public class CustomPinActivity extends AppLockActivity {
                 .getInstance(this)
                 .sendBroadcast(new Intent().setAction(ACTION_CANCEL));
         Intent intent = new Intent(CustomPinActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
