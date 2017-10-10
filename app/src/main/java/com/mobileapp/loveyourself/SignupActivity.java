@@ -76,7 +76,7 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         calendar.add(Calendar.YEAR, -18);
         long legalAge = calendar.getTime().getTime();
 
-        mDatepicker.setMinDate(legalAge);
+        mDatepicker.setMaxDate(legalAge);
         checkDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
