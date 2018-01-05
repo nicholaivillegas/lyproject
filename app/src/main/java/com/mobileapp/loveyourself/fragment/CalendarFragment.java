@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +43,8 @@ import com.mobileapp.loveyourself.Reservation;
 import com.mobileapp.loveyourself.dialog.FactorDialog;
 import com.mobileapp.loveyourself.dialog.FactorViewDialog;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
@@ -211,9 +216,6 @@ public class CalendarFragment extends Fragment {
                         modelFactors = dataSnapshot.getValue(Factors.class);
                         Date date = new Date();
                         if (modelFactors.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-//                            cardFactor.setVisibility(View.VISIBLE);
-//                            textFactor.setText("Activity");
-//                            textFactor1.setText("Click here for more...");
                             final int year = Integer.parseInt(modelFactors.getDateRecordedYear());
                             final int month = Integer.parseInt(modelFactors.getDateRecordedMonth());
                             final int day = Integer.parseInt(modelFactors.getDateRecordedDate());
@@ -222,7 +224,35 @@ public class CalendarFragment extends Fragment {
                             selectedDay = day;
                             date = new Date(year - 1900, month, day);
                             calendarView.setDateSelected(date, true);
-                            calendarView.setSelectionColor(R.color.colorPrimary);
+                            final Date finalDate = date;
+                            DayViewDecorator dayViewDecorator = new DayViewDecorator() {
+                                @Override
+                                public boolean shouldDecorate(CalendarDay day) {
+                                    return day.getDay() == finalDate.getDate();
+                                }
+
+                                @Override
+                                public void decorate(DayViewFacade view) {
+                                    view.setSelectionDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));//orange
+//                                    if (modelFactors.getCheckOralLow().equals("true") || modelFactors.getCheckReceptiveLow().equals("true")) {
+//                                        if (modelFactors.getCheckOral().equals("true") || modelFactors.getCheckReceived().equals("true") || modelFactors.getCheckIntravenous().equals("true")
+//                                                || modelFactors.getCheckShared().equals("true") || modelFactors.getCheckAccidental().equals("true") || modelFactors.getCheckReceptive().equals("true")) {
+//                                            calendarView.setSelectionColor(R.color.colorYellow);//orange
+////                                            view.setSelectionDrawable(new ColorDrawable(getResources().getColor(R.color.colorOrange)));//orange
+////                                            view.addSpan(new BackgroundColorSpan(getResources().getColor(R.color.colorOrange)));
+//                                        } else {
+//                                            calendarView.setSelectionColor(R.color.colorOrange);//yellow
+////                                            view.setSelectionDrawable(new ColorDrawable(getResources().getColor(R.color.colorYellow)));//orange
+////                                            view.addSpan(new BackgroundColorSpan(getResources().getColor(R.color.colorYellow)));
+//                                        }
+//                                    } else {
+//                                        calendarView.setSelectionColor(R.color.colorPrimary);//red
+////                                        view.setSelectionDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));//orange
+////                                        view.addSpan(new BackgroundColorSpan(getResources().getColor(R.color.colorPrimary)));
+//                                    }
+                                }
+                            };
+                            calendarView.addDecorator(dayViewDecorator);
                         } else
                             calendarView.setDateSelected(date, false);
                     } catch (Exception ex) {

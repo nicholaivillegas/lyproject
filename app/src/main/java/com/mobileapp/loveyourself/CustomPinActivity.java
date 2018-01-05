@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
@@ -79,8 +80,18 @@ public class CustomPinActivity extends AppLockActivity {
         builder.setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                    public void onClick(final DialogInterface dialog, int id) {
+                        new CountDownTimer(30000, 1000) {
+
+                            public void onTick(long millisUntilFinished) {
+                                //here you can have your logic to set text to edittext
+                            }
+
+                            public void onFinish() {
+                                dialog.dismiss();
+                            }
+
+                        }.start();
                     }
                 });
         AlertDialog alert = builder.create();
@@ -89,7 +100,9 @@ public class CustomPinActivity extends AppLockActivity {
 
     @Override
     public void onPinFailure(int attempts) {
-
+        if (attempts == 3) {
+            createDialog("Try again after 1 minute");
+        }
     }
 
     @Override

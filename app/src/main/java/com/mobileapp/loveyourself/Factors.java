@@ -16,13 +16,15 @@ public class Factors {
     private String checkIntravenous;
     private String checkReceived;
     private String checkOral;
+    private String checkOralLow;
+    private String checkReceptiveLow;
     private String other;
 
     public Factors() {
 
     }
 
-    public Factors(String id, String dateRecordedYear, String dateRecordedMonth, String dateRecordedDate, String description, String checkReceptive, String checkAccidental, String checkShared, String checkIntravenous, String checkReceived, String checkOral, String other) {
+    public Factors(String id, String dateRecordedYear, String dateRecordedMonth, String dateRecordedDate, String description, String checkReceptive, String checkAccidental, String checkShared, String checkIntravenous, String checkReceived, String checkOral, String checkOralLow, String checkReceptiveLow, String other) {
         this.id = id;
         this.dateRecordedYear = dateRecordedYear;
         this.dateRecordedMonth = dateRecordedMonth;
@@ -34,6 +36,8 @@ public class Factors {
         this.checkIntravenous = checkIntravenous;
         this.checkReceived = checkReceived;
         this.checkOral = checkOral;
+        this.checkOralLow = checkOralLow;
+        this.checkReceptiveLow = checkReceptiveLow;
         this.other = other;
     }
 
@@ -123,6 +127,22 @@ public class Factors {
 
     public void setCheckOral(String checkOral) {
         this.checkOral = checkOral;
+    }
+
+    public String getCheckOralLow() {
+        return checkOralLow;
+    }
+
+    public void setCheckOralLow(String checkOralLow) {
+        this.checkOralLow = checkOralLow;
+    }
+
+    public String getCheckReceptiveLow() {
+        return checkReceptiveLow;
+    }
+
+    public void setCheckReceptiveLow(String checkReceptiveLow) {
+        this.checkReceptiveLow = checkReceptiveLow;
     }
 
     public String getOther() {

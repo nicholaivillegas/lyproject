@@ -6,6 +6,8 @@
     <color name="colorPrimaryDark">#C0000D</color>
     <color name="colorBlack">#000B29</color>
     <color name="colorAccent">#EDB83D</color>
+    <color name="colorYellow">#FF0</color>
+    <color name="colorOrange">#ffa700 </color>
 
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>

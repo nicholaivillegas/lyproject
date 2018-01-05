@@ -53,6 +53,10 @@ public class FactorViewDialog extends DialogFragment {
     Unbinder unbinder;
     @BindView(R.id.text_label)
     TextView textLabel;
+    @BindView(R.id.check_oral_low)
+    CheckBox checkOralLow;
+    @BindView(R.id.check_receptive_low)
+    CheckBox checkReceptiveLow;
 
     private String id;
     Factors model;
@@ -87,6 +91,8 @@ public class FactorViewDialog extends DialogFragment {
         checkIntravenous.setClickable(false);
         checkReceived.setClickable(false);
         checkOral.setClickable(false);
+        checkOralLow.setClickable(false);
+        checkReceptiveLow.setClickable(false);
         buttonSubmit.setVisibility(View.GONE);
         id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
@@ -120,6 +126,12 @@ public class FactorViewDialog extends DialogFragment {
                                 }
                                 if (model.getCheckOral().equals("true")) {
                                     checkOral.setChecked(true);
+                                }
+                                if (model.getCheckOral().equals("true")) {
+                                    checkOralLow.setChecked(true);
+                                }
+                                if (model.getCheckOral().equals("true")) {
+                                    checkReceptiveLow.setChecked(true);
                                 }
                             }
                         }

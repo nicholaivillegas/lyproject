@@ -58,9 +58,15 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     private DatabaseReference myRef;
     private ChildEventListener ref;
 
+    private DatabaseReference mDatabase2;
+    private DatabaseReference myRef2;
+    private ChildEventListener ref2;
+    private int count = 0;
+
     private String firstName, lastName, location, number, email;
 
     UserInfo model;
+    Reservation model2;
 
     @Nullable
     @Override
@@ -100,12 +106,17 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     startActivity(intent);
                 }
                 if (testingLocation != null && checkReminder.isChecked()) {
-                    buttonSubmit.setText("BACK");
-                    getFieldsInformation();
-                    saveProfile();
-                    createCalendar();
-                    buttonSubmit.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                    buttonSubmit.setTextColor(getResources().getColor(R.color.colorAccent));
+                    if (count < 35) {
+                        buttonSubmit.setText("BACK");
+                        getFieldsInformation();
+                        saveProfile();
+                        countEntries();
+//                    createCalendar();
+                        buttonSubmit.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                        buttonSubmit.setTextColor(getResources().getColor(R.color.colorAccent));
+                    } else {
+                        Toast.makeText(getContext(), "Too many reservations. Please contact Love Yourself Administrator", Toast.LENGTH_SHORT).show();
+                    }
                 } else if (testingLocation == null) {
                     createDialog("Select Testing Location!");
                     return;
@@ -222,6 +233,32 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void countEntries() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef2 = database.getReference("reservations");
+        mDatabase2 = FirebaseDatabase.getInstance().getReference();
+
+        myRef2.addValueEventListener(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // TODO: show the count in the UI
+                count = 0;
+                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+                    try {
+                        model2 = dataSnapshot.getValue(Reservation.class);
+                        if (model2.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                            count = count + 1;
+                        }
+                    } catch (Exception ex) {
+                        Log.e("RAWR", ex.getMessage());
+                    }
+                }
+            }
+
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
 }

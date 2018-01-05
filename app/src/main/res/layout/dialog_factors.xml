@@ -51,6 +51,18 @@
         android:layout_height="wrap_content"
         android:text="Receptive/insertive oral sex" />
 
+    <CheckBox
+        android:id="@+id/check_oral_low"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Received/Performed oral intercourse" />
+
+    <CheckBox
+        android:id="@+id/check_receptive_low"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Receptive/Insertive sexual intercourse with protection" />
+
     <Button
         android:id="@+id/button_submit"
         android:layout_width="match_parent"

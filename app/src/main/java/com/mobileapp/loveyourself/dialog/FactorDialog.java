@@ -2,11 +2,8 @@ package com.mobileapp.loveyourself.dialog;
 
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
@@ -18,15 +15,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mobileapp.loveyourself.Factors;
 import com.mobileapp.loveyourself.R;
-import com.mobileapp.loveyourself.Reservation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +49,12 @@ public class FactorDialog extends DialogFragment {
     @BindView(R.id.button_submit)
     Button buttonSubmit;
     Unbinder unbinder;
+    @BindView(R.id.text_label)
+    TextView textLabel;
+    @BindView(R.id.check_oral_low)
+    CheckBox checkOralLow;
+    @BindView(R.id.check_receptive_low)
+    CheckBox checkReceptiveLow;
 
     private int daysExposure;
     private int year;
@@ -141,6 +142,8 @@ public class FactorDialog extends DialogFragment {
                 String.valueOf(checkIntravenous.isChecked()),
                 String.valueOf(checkReceived.isChecked()),
                 String.valueOf(checkOral.isChecked()),
+                String.valueOf(checkOralLow.isChecked()),
+                String.valueOf(checkReceptiveLow.isChecked()),
                 "");
         mDatabase.child("factors").child(String.valueOf(timestamp)).setValue(factors);
         createDialog("We highly recommend that you get tested within 10 days");

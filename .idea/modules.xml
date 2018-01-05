@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LoveYourself.iml" filepath="$PROJECT_DIR$/LoveYourself.iml" />
+      <module fileurl="file://D:\test\Test Projects\lyproject\LoveYourself.iml" filepath="D:\test\Test Projects\lyproject\LoveYourself.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lyproject.iml" filepath="$PROJECT_DIR$/lyproject.iml" />
     </modules>
