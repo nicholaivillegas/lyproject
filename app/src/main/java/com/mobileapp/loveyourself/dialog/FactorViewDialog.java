@@ -127,10 +127,10 @@ public class FactorViewDialog extends DialogFragment {
                                 if (model.getCheckOral().equals("true")) {
                                     checkOral.setChecked(true);
                                 }
-                                if (model.getCheckOral().equals("true")) {
+                                if (model.getCheckOralLow().equals("true")) {
                                     checkOralLow.setChecked(true);
                                 }
-                                if (model.getCheckOral().equals("true")) {
+                                if (model.getCheckReceptiveLow().equals("true")) {
                                     checkReceptiveLow.setChecked(true);
                                 }
                             }

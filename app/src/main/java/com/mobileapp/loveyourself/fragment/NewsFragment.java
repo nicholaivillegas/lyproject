@@ -16,8 +16,10 @@ import com.squareup.picasso.Picasso;
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9, buttonImage10, buttonImage11, buttonImage12, buttonImage13, buttonImage14, buttonImage15, buttonImage16, buttonImage17, buttonImage18, buttonImage19, buttonImage20, buttonImage21;
-    private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20, image21;
+    private Button buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9, buttonImage10, buttonImage11, buttonImage12, buttonImage13, buttonImage14, buttonImage15, buttonImage16, buttonImage17, buttonImage18, buttonImage19, buttonImage20, buttonImage21,
+            buttonImage22, buttonImage23, buttonImage24, buttonImage25, buttonImage26, buttonImage27, buttonImage28, buttonImage29, buttonImage30;
+    private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20, image21,
+            image22, image23, image24, image25, image26, image27, image28, image29, image30;
     String url;
 
     @Nullable
@@ -46,6 +48,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         buttonImage20 = (Button) view.findViewById(R.id.button20);
         buttonImage21 = (Button) view.findViewById(R.id.button21);
 
+        buttonImage22 = (Button) view.findViewById(R.id.button22);
+        buttonImage23 = (Button) view.findViewById(R.id.button23);
+        buttonImage24 = (Button) view.findViewById(R.id.button24);
+        buttonImage25 = (Button) view.findViewById(R.id.button25);
+        buttonImage26 = (Button) view.findViewById(R.id.button26);
+
+        buttonImage27 = (Button) view.findViewById(R.id.button27);
+        buttonImage28 = (Button) view.findViewById(R.id.button28);
+        buttonImage29 = (Button) view.findViewById(R.id.button29);
+        buttonImage30 = (Button) view.findViewById(R.id.button30);
+
         image1 = (ImageView) view.findViewById(R.id.image_news1);
         image2 = (ImageView) view.findViewById(R.id.image_news2);
         image3 = (ImageView) view.findViewById(R.id.image_news3);
@@ -68,6 +81,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         image20 = (ImageView) view.findViewById(R.id.image_news20);
         image21 = (ImageView) view.findViewById(R.id.image_news21);
 
+        image22 = (ImageView) view.findViewById(R.id.image_news22);
+        image23 = (ImageView) view.findViewById(R.id.image_news23);
+        image24 = (ImageView) view.findViewById(R.id.image_news24);
+        image25 = (ImageView) view.findViewById(R.id.image_news25);
+        image26 = (ImageView) view.findViewById(R.id.image_news26);
+
+        image27 = (ImageView) view.findViewById(R.id.image_news27);
+        image28 = (ImageView) view.findViewById(R.id.image_news28);
+        image29 = (ImageView) view.findViewById(R.id.image_news29);
+        image30 = (ImageView) view.findViewById(R.id.image_news30);
+
         buttonImage1.setOnClickListener(this);
         buttonImage2.setOnClickListener(this);
         buttonImage3.setOnClickListener(this);
@@ -89,6 +113,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         buttonImage19.setOnClickListener(this);
         buttonImage20.setOnClickListener(this);
         buttonImage21.setOnClickListener(this);
+
+        buttonImage22.setOnClickListener(this);
+        buttonImage23.setOnClickListener(this);
+        buttonImage24.setOnClickListener(this);
+        buttonImage25.setOnClickListener(this);
+        buttonImage26.setOnClickListener(this);
+
+        buttonImage27.setOnClickListener(this);
+        buttonImage28.setOnClickListener(this);
+        buttonImage29.setOnClickListener(this);
+        buttonImage30.setOnClickListener(this);
 
         initImage();
         return view;
@@ -161,6 +196,35 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             case R.id.button21:
                 url = "http://www.loveyourself.ph/2017/09/hiv-cases-continue-to-rise-according-to.html";
                 break;
+
+            case R.id.button22:
+                url = "http://www.loveyourself.ph/2017/10/status-hiv-and-blood-donations.html";
+                break;
+            case R.id.button23:
+                url = "http://www.loveyourself.ph/2017/10/batch-duque-loveyourselfs-18th-batch.html";
+                break;
+            case R.id.button24:
+                url = "http://www.loveyourself.ph/2017/11/join-lovesquad-on-november-26-and-make.html";
+                break;
+            case R.id.button25:
+                url = "http://www.loveyourself.ph/2017/11/get-ready-for-lovesquad-on-november-26.html";
+                break;
+            case R.id.button26:
+                url = "http://www.loveyourself.ph/2017/11/travel-squad-tells-you-how-to-get-to.html";
+                break;
+
+            case R.id.button27:
+                url = "http://www.loveyourself.ph/2017/11/these-squads-explain-why-its-cool-to.html";
+                break;
+            case R.id.button28:
+                url = "http://www.loveyourself.ph/2017/12/status-live-and-let-love-open-letter.html";
+                break;
+            case R.id.button29:
+                url = "http://www.loveyourself.ph/2017/12/celebrating-2017-at-behind-mask.html";
+                break;
+            case R.id.button30:
+                url = "http://www.loveyourself.ph/2018/01/safe-spaces-ph-distributing-free.html";
+                break;
         }
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
@@ -190,6 +254,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         Picasso.with(this.getContext()).load("https://3.bp.blogspot.com/--a4JIPaPALo/WbkVkHogdiI/AAAAAAAAADw/zoD6HQ7vKMwxrArVktXMF_JwWs-jZL8OQCLcBGAs/s640/pic2.jpg").into(image20);
         Picasso.with(this.getContext()).load("https://4.bp.blogspot.com/-GDKf7T1iiN4/WY_uh6bXNfI/AAAAAAAAYcQ/fJ0TccD4XPskrelpjHlSzgHUT76kXILiACLcBGAs/s640/image.png").into(image19);
         Picasso.with(this.getContext()).load("https://3.bp.blogspot.com/-fkvaIZRl3B4/WY_lMCEnvEI/AAAAAAAAYcE/n4l7KTuwWjkv9z5EvdueRsjHtisCAFhTgCEwYBhgL/s640/Pia%2BLove%2BGala%2BAmbassador.jpg").into(image18);
+
+        Picasso.with(this.getContext()).load("https://lh5.googleusercontent.com/yx2PDSm52PG1XlD95cdzXIyFFtMsYX2utg6CQHj7Sb0CGznjDoIvoVEM2JuAQ4jLFFHFkrBGC1agdqiPDSL_VUuKXoW6-XUCoNFF9IbOcum8E5UZ6yvohpOD_y7Bcp_OJT3pnUqd").into(image22);
+        Picasso.with(this.getContext()).load("https://lh6.googleusercontent.com/2P5lI5CVXlIVOpUb3mKq-spC7GoMTmNOusr3p_z2qTEGdXSzzPTyhUpggohhusAXCTZ1qXlkYOdvKlSnOlsQWb5QgQXa9DA7NUOu0_ldY38IDS5HmZxh_8Jh0XJUnalUKG9Ga5zu").into(image23);
+        Picasso.with(this.getContext()).load("https://2.bp.blogspot.com/-4FoNFtblIPk/WfxUdXW9szI/AAAAAAAAAEU/IiKQzVEZbDAHkcCw1aTeX7ib83WSIil_wCLcBGAs/s640/LOVE%2BSQUAD%2Bposter%2B1%2Bv02.jpg").into(image24);
+        Picasso.with(this.getContext()).load("https://1.bp.blogspot.com/-VX9RuR8o3y8/WgVWTYpYQFI/AAAAAAAAY94/bg3fqWvZUJAabopvoTt_6VxUMASIOL0OQCLcBGAs/s640/LS%2BSTUDY%2BPOSTER2%2B%25282%2529.jpg").into(image25);
+        Picasso.with(this.getContext()).load("https://1.bp.blogspot.com/-xpOO_7QfcVI/WgfDNTZ4_6I/AAAAAAAAZA4/QM-2YZUEBXA7tSF_5Y0Y3baNdwmx8It_QCLcBGAs/s320/travel%2Bsquad.jpg").into(image26);
+
+        Picasso.with(this.getContext()).load("https://1.bp.blogspot.com/-oC3iGYV8srA/WgrSHkURt6I/AAAAAAAAZB4/3iSyCGGdIWEdIO5sRZkltxxPTGjm2ieDgCLcBGAs/s640/love%2Bsquad%2Bmain.jpg").into(image27);
+        Picasso.with(this.getContext()).load("https://lh3.googleusercontent.com/kzvK-A8J7pz7BvJijSMyuUNDOFVY41v8dc-smF7Xg-GdR-BftXWsX1aFvQFPSE_KGDuyWstEfOtItCNeEFrLpask13uQ8vuEP7jK2Y0MUP_sUWgOxIZ28Gaj8ithLskvjk_Ks_Ph").into(image28);
+        Picasso.with(this.getContext()).load("https://lh4.googleusercontent.com/r6TpDMD47i-xOp5CRFF3LsK6lUdzwYcnL-lMXt0qrlT5FlJ-2h0cDxEoe2ZOa1QC5Jw_CmtVuyYheFXJTH_X3d3PM-pVgjqqBXb8rpUvo6HWCqSMuLqscca_EI52aLpVF1zwAWZP").into(image29);
+        Picasso.with(this.getContext()).load("https://lh5.googleusercontent.com/9GjPbWq6OXQUZsalOU5xSEP0Y8P6mdts2vNIRRceRE0cJFzafE6giQpKEIyPoyWDgJ_P6arAG5GGJ2un-GLzdGzHy1P4cYDMHqJI7AHkF_ZNaJrOcWQNtHzcWFzzrUbBZtHjT8cN").into(image30);
 
     }
 }

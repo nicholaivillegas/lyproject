@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -65,8 +66,8 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
         inputQuestion = (EditText) findViewById(R.id.edit_security_question);
         inputAnswer = (EditText) findViewById(R.id.edit_answer);
         radioGroupGender = (RadioGroup) findViewById(R.id.radiogroup_gender);
-        radioMale = (RadioButton) findViewById(R.id.radio_male);
-        radioFemale = (RadioButton) findViewById(R.id.radio_female);
+        radioMale = (RadioButton) findViewById(R.id.radio_male_signup);
+        radioFemale = (RadioButton) findViewById(R.id.radio_female_signup);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         mDatepicker = (DatePicker) findViewById(R.id.datepicker);
@@ -226,10 +227,14 @@ public class SignupActivity extends AppCompatActivity implements RadioGroup.OnCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        if (checkedId == R.id.radio_male) {
-            gender = "Male";
-        } else if (checkedId == R.id.radio_female) {
-            gender = "Female";
+        if (group.getId() == R.id.radiogroup_gender) {
+            if (checkedId == R.id.radio_male_signup) {
+                gender = "Male";
+                Toast.makeText(this, "male", Toast.LENGTH_SHORT).show();
+            } else if (checkedId == R.id.radio_female_signup) {
+                gender = "Female";
+                Toast.makeText(this, "female", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

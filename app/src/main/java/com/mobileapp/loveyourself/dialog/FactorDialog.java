@@ -146,7 +146,15 @@ public class FactorDialog extends DialogFragment {
                 String.valueOf(checkReceptiveLow.isChecked()),
                 "");
         mDatabase.child("factors").child(String.valueOf(timestamp)).setValue(factors);
-        createDialog("We highly recommend that you get tested within 10 days");
+        if(checkOralLow.isChecked() || checkReceptiveLow.isChecked())
+        {
+            createDialog("We highly recommend that you get tested within 30 days");
+
+        }
+        else
+        {
+            createDialog("We highly recommend that you get tested within 10 days");
+        }
     }
 
     public void checkExposure() {

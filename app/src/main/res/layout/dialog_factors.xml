@@ -49,7 +49,7 @@
         android:id="@+id/check_oral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Receptive/insertive oral sex" />
+        android:text="Insertive anal/vaginal sex without protection" />
 
     <CheckBox
         android:id="@+id/check_oral_low"

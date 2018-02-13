@@ -19,11 +19,13 @@ public class Reservation {
     public String testingDateDay;
     public String other;
     public String extra;
+    public String age;
+    public String gender;
 
     public Reservation() {
     }
 
-    public Reservation(String id, String timestamp, String firstName, String lastName, String cityOfResidence, String mobile, String email, String testingLocation, String testingDateYear, String testingDateMonth, String testingDateDay, String other, String extra) {
+    public Reservation(String id, String timestamp, String firstName, String lastName, String cityOfResidence, String mobile, String email, String testingLocation, String testingDateYear, String testingDateMonth, String testingDateDay, String other, String extra, String age, String gender) {
         this.id = id;
         this.timestamp = timestamp;
         this.firstName = firstName;
@@ -37,6 +39,8 @@ public class Reservation {
         this.testingDateDay = testingDateDay;
         this.other = other;
         this.extra = extra;
+        this.age = age;
+        this.gender = gender;
     }
 
     public String getId() {
@@ -141,5 +145,21 @@ public class Reservation {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

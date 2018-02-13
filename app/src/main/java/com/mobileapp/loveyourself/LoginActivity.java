@@ -34,6 +34,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.mobileapp.loveyourself.dialog.ForgetPasswordDialog;
+import com.mobileapp.loveyourself.dialog.ResendDialog;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int RC_SIGN_IN = 1;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Button btnLogin, btnForgot, btnSignUp;
+    Button btnLogin, btnForgot, btnSignUp, btnResend;
     EditText etEmail, etPassword;
     TextInputLayout tilEmail, tilPassword;
     ProgressBar progress;
@@ -54,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnForgot = (Button) findViewById(R.id.btn_reset_password);
         btnSignUp = (Button) findViewById(R.id.btn_signup);
+        btnResend = (Button) findViewById(R.id.btn_resend);
         etEmail = (EditText) findViewById(R.id.edit_email);
         etPassword = (EditText) findViewById(R.id.edit_password);
         tilEmail = (TextInputLayout) findViewById(R.id.til_email);
@@ -118,6 +121,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnForgot.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
+        btnResend.setOnClickListener(this);
     }
 
     @Override
@@ -240,7 +244,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
                 break;
             case R.id.btn_resend:
-                verifyEmail();
+//                verifyEmail();
+                ResendDialog resendDialog = new ResendDialog();
+                resendDialog.show(getFragmentManager(), "Resend Dialog");
+
                 break;
 
         }

@@ -109,7 +109,7 @@
                     android:weightSum="2">
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/radio_male_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -118,6 +118,7 @@
                         android:textSize="18sp" />
 
                     <RadioButton
+                        android:id="@+id/radio_female_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -147,12 +148,12 @@
 
                 <DatePicker
                     android:id="@+id/datepicker"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLightPrimary"
                     android:calendarViewShown="false"
-                    android:datePickerMode="spinner" />
+                    android:datePickerMode="spinner"
+                    android:visibility="gone" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"

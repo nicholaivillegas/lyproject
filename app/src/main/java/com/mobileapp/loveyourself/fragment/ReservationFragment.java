@@ -3,6 +3,7 @@ package com.mobileapp.loveyourself.fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.icu.util.GregorianCalendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -39,6 +40,11 @@ import com.mobileapp.loveyourself.Reservation;
 import com.mobileapp.loveyourself.UserInfo;
 import com.mobileapp.loveyourself.dialog.ReservationDialog;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ReservationFragment extends Fragment implements View.OnClickListener {
 
     private RadioGroup radioGroupBranch;
@@ -63,7 +69,7 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
     private ChildEventListener ref2;
     private int count = 0;
 
-    private String firstName, lastName, location, number, email;
+    private String firstName, lastName, location, number, email, age, gender;
 
     UserInfo model;
     Reservation model2;
@@ -109,11 +115,16 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                     if (count < 35) {
                         buttonSubmit.setText("BACK");
                         getFieldsInformation();
-                        saveProfile();
+                        try {
+                            saveProfile();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                         countEntries();
 //                    createCalendar();
                         buttonSubmit.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                         buttonSubmit.setTextColor(getResources().getColor(R.color.colorAccent));
+                        createDialog("Reservation Successful!");
                     } else {
                         Toast.makeText(getContext(), "Too many reservations. Please contact Love Yourself Administrator", Toast.LENGTH_SHORT).show();
                     }
@@ -142,7 +153,16 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         testingDate = String.valueOf(datepicker.getYear()) + "," + String.valueOf(datepicker.getMonth() + 1) + "," + String.valueOf(datepicker.getDayOfMonth());
     }
 
-    private void saveProfile() {
+    private void saveProfile() throws ParseException {
+        Calendar mydate = new GregorianCalendar();
+        Date thedate = new SimpleDateFormat("M-dd-yyyy", Locale.ENGLISH).parse(age);
+
+        mydate.setTime(thedate);
+
+        Calendar datenow = new GregorianCalendar();
+        datenow.getTime();
+
+        String ageNow = String.valueOf(datenow.get(java.util.Calendar.YEAR) - mydate.get(java.util.Calendar.YEAR));
         Reservation reservation = new Reservation(
                 FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 timestamp,
@@ -154,7 +174,9 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                 testingLocation,
                 String.valueOf(datepicker.getYear()), String.valueOf(datepicker.getMonth() + 1), String.valueOf(datepicker.getDayOfMonth()),
                 other,
-                extra);
+                extra,
+                ageNow,
+                gender);
         mDatabase.child("reservations").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(reservation);
     }
 
@@ -193,6 +215,10 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
                             location = model.getLocation();
                             number = model.getNumber();
                             email = model.getEmail();
+                            age = model.getBirthdate();
+
+
+                            gender = model.getGender();
 //                            editFname.setText(model.getFirstName());
 //                            editLname.setText(model.getLastName());
 //                            editCityResidence.setText(model.getLocation());

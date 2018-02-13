@@ -8,7 +8,428 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Safe Spaces PH Distributing Free Condoms and Lubes, Launched"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, January 07, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Geldof Resuello and Tino Largado In a country where social stigma is still heavily attached to condom access and use, how does one protect one’s self? LoveYourself, in partnership with Save the Children formally introduced Safe Spaces PH on December 22 at Greenbelt 3’s My Cinema in Makati City through an adult education dialogue which tackled the idea of a sustainable condom distribution supply chain that is augmented by technology. adultED:..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Celebrating 2017 at Behind the Mask: The LoveYourself Ball"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, December 28, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LoveYourself had a successful 2017. Through its fundraising events, community-based screening events, implementation of a youth-centered campaign, launch of the first transgender health clinic in the Philippines, organizing Asia’s premier charity and awards gala to the creation of a mobile application for condom utilization, LoveYourself continues to grow and spread the message of love. On December 16, 2017, volunteers gathered to celebrate..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS: Live and Let Love - An Open Letter from a Person Who Learned What Is to Be True About HIV"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, December 02, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Reiner “Meow” Grospe with Kelvin Vistan We have seen all types of love – that is all types of couples. There are heterosexual couples, LGBTQI+ couples, and there are also serodiscordant couples. Serodiscordant couples are partners in which one is positive of Human Immunodeficiency Virus (HIV) and the other is negative.Our HIV status should not be an issue, and it will not be if people free themselves from the social stigma brought about..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="These Squads Explain Why It’s Cool to Know Your Status at the #LoveSquad HIV Screening Day Event on November 26"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, November 16, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Diego Rozul and Jean Natividad In case you missed it, #LoveSquad, LoveYourself’s fast, easy, and totally anonymous HIV screening day event is happening on November 26, Sunday, from 10 a.m. to 7 p.m. at Victoria Court Malate. Don’t forget to register here: go.loveyourself.ph/lovesquad. And just in case you need a tad more convincing to show up, we’ve asked our dear squads why making HIV testing your #SquadGoals and a regular part of..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Travel Squad Tells You How to Get to Victoria Court Malate for #LoveSquad HIV Screening Day on November 26"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tuesday, November 14, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="These are the only directions you'll need on November 26, Sunday, as you head to #LoveSquad, LoveYourself’s fast, easy, and totally anonymous HIV screening day event at Victoria Court Malate. It's from 10 a.m. to 7 p.m., so grab your squad and be sure to drop by. And don't forget to register at go.loveyourself.ph/lovesquad. You'll receive a confirmation message two days before the event (November 24, 2017, Friday). Exact Address Victoria..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Get Ready for #LoveSquad on November 26 | Study Squad Explains What Community-Based HIV Screening Is All About"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Friday, November 13, 2017 " />
+
+                <ImageView
+                    android:id="@+id/image_news25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Ulysses Konstantin Largado Hang out with us at #LoveSquad on November 26th, 2017, 10 am to 7 pm, at Victoria Court Malate, and experience private, secure, and accurate HIV testing in a fraction of the time—no more than 20 minutes from the time of prick ‘til you see the results on the stick! Quick, isn’t it? Visit go.loveyourself.ph/lovesquad to sign up, and you will receive a confirmation message two days before the event (November 24, 2017,..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Join the #LoveSquad on November 26 and make HIV screening your #SquadGoals"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Friday, November 03, 2017 " />
+
+                <ImageView
+                    android:id="@+id/image_news24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Jean Natividad Hey, you! Yes, you. The #LoveSquad is calling on all you fitness buffs, jet-setters, bookworms, and lovers of life out there. Be at Victoria Court Malate on November 26, 2017, Sunday, for LoveYourself’s fast, easy, and totally anonymous HIV screening day. The event is from 10 a.m. to 7 p.m., so grab the whole gang and make HIV screening your #SquadGoals. Visit go.loveyourself.ph/lovesquad to sign up, and you will receive a confirmation..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Batch Duque, LoveYourself’s 18th batch, completes the nostalgic series of the organization’s heritage"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Wednesday, October 18, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Mark Angello C. Ganon September 30, 2017 – Fresh faces once again dotted the People’s Hall of SM Aura Premier with the orientation of Batch Duque, LoveYourself’s 3rd set of volunteers for 2017. JM Maynes, Love U (the corporate university of LoveYourself) admin, oversaw the batch orientation of 45 promising individuals who underwent and passed a selective recruitment process. The whole-day affair centered on the essence of volunteerism in..."
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS: HIV and Blood Donations"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_date_range_black_18dp"
+                    android:drawablePadding="5dp"
+                    android:text="Monday, October 16, 2017  " />
+
+                <ImageView
+                    android:id="@+id/image_news22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="By Carlos Diego A. Rozul Everyone has talked about a particular status in his or her life, be it their relationship status, their financial status, and heck people talk about their problems on their Facebook status all the time! But one thing that’s rarely talked about is one’s HIV status. Despite its relevance today it is still greatly stigmatized and has been thought of as taboo by many. This monthly column aims to help "
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_selector"
+                    android:text="READ MORE" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"

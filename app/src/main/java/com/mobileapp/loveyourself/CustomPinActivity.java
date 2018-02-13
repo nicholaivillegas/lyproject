@@ -18,6 +18,8 @@ import com.github.orangegangsters.lollipin.lib.managers.AppLockActivity;
 import com.mobileapp.loveyourself.dialog.BranchDialog;
 import com.mobileapp.loveyourself.dialog.ForgetPasswordDialog;
 
+import java.util.Locale;
+
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 import uk.me.lewisdeane.ldialogs.CustomDialog;
 
@@ -78,30 +80,32 @@ public class CustomPinActivity extends AppLockActivity {
     public void createDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, int id) {
-                        new CountDownTimer(30000, 1000) {
+                .setCancelable(false);
 
-                            public void onTick(long millisUntilFinished) {
-                                //here you can have your logic to set text to edittext
-                            }
-
-                            public void onFinish() {
-                                dialog.dismiss();
-                            }
-
-                        }.start();
-                    }
-                });
-        AlertDialog alert = builder.create();
+        final AlertDialog alert = builder.create();
         alert.show();
+        alert.setCanceledOnTouchOutside(false);
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                Integer i = (int) (long) millisUntilFinished;
+                i = i / 1000;
+                Toast.makeText(CustomPinActivity.this, "Try again after: " + i + " seconds", Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFinish() {
+                alert.dismiss();
+            }
+
+        }.start();
+
     }
 
     @Override
     public void onPinFailure(int attempts) {
         if (attempts == 3) {
-            createDialog("Try again after 1 minute");
+            createDialog("Too much attempts!");
+
         }
     }
 

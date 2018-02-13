@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.text.format.DateFormat;
 import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,6 +49,8 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -177,6 +180,25 @@ public class CalendarFragment extends Fragment {
                             selectedDay = day;
 //                            Date date = new Date(year - 1900, month, day);
 //                            calendarView.setDateSelected(date, true);
+//                            Date date1 = new Date();
+//                            String dayNow = (String) DateFormat.format("dd", date1); // 20
+//                            String monthNow = (String) DateFormat.format("MM", date1); // 06
+//                            String yearNow = (String) DateFormat.format("yyyy", date1); // 2013
+//                            if (String.valueOf(selectedDay) == dayNow && String.valueOf(selectedMonth) == monthNow && String.valueOf(selectedYear) == yearNow) {
+//                                createDialog("You have a scheduled testing today");
+//                            }
+                            Date date1 = new Date();
+                            String dayNow = (String) DateFormat.format("dd", date1); // 20
+                            String monthNow = (String) DateFormat.format("MM", date1); // 06
+                            String yearNow = (String) DateFormat.format("yyyy", date1); // 2013
+                            int month1 = Integer.parseInt(monthNow);
+                            String month2 = String.format("%02d", month1);
+                            String now2 = String.format("%02d", selectedMonth);
+                            String day2 = String.format("%02d", selectedDay);
+                            String year2 = String.valueOf(selectedYear);
+                            if (day2.equals(dayNow) && now2.equals(month2) && year2.equals(yearNow)) {
+                                createDialog("You have a scheduled testing today");
+                            }
 
                         }
                     } catch (Exception ex) {
@@ -222,13 +244,25 @@ public class CalendarFragment extends Fragment {
                             selectedYear = year;
                             selectedMonth = month;
                             selectedDay = day;
+                            Date date1 = new Date();
+                            String dayNow = (String) DateFormat.format("dd", date1); // 20
+                            String monthNow = (String) DateFormat.format("MM", date1); // 06
+                            String yearNow = (String) DateFormat.format("yyyy", date1); // 2013
+                            int month1 = Integer.parseInt(monthNow);
+                            String month2 = String.format("%02d", month1);
+                            String now2 = String.format("%02d", selectedMonth + 1);
+                            String day2 = String.valueOf(selectedDay);
+                            String year2 = String.valueOf(selectedYear);
+                            if (day2.equals(dayNow) && now2.equals(month2) && year2.equals(yearNow)) {
+                                createDialog("You have a scheduled testing today");
+                            }
                             date = new Date(year - 1900, month, day);
                             calendarView.setDateSelected(date, true);
                             final Date finalDate = date;
                             DayViewDecorator dayViewDecorator = new DayViewDecorator() {
                                 @Override
                                 public boolean shouldDecorate(CalendarDay day) {
-                                    return day.getDay() == finalDate.getDate();
+                                    return ((day.getDay() == finalDate.getDate()) && (day.getMonth() == finalDate.getMonth()) && (day.getYear() == finalDate.getYear()));
                                 }
 
                                 @Override
@@ -290,6 +324,27 @@ public class CalendarFragment extends Fragment {
         switch (view.getId()) {
             case R.id.card_reservation:
                 //LOAD DETAILS
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                myRef.child(model.getId()).removeValue();
+                                cardReservation.setVisibility(View.GONE);
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                dialog.dismiss();
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Do you want to cancel reservation?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
                 break;
             case R.id.card_factor:
                 FactorViewDialog factorDialog = new FactorViewDialog();
@@ -364,4 +419,16 @@ public class CalendarFragment extends Fragment {
         }
     }
 
+    public void createDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }
